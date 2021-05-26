@@ -1,5 +1,6 @@
 {
-    "name": "fresh/integration-with-buddy",
+    "name": "buddy/buddy-deploy",
+		"version": "0.1.0",
     "authors": [
         {
             "name": "Maciej Palmowski",
