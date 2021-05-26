@@ -18,4 +18,4 @@
 <h4>Other constants</h4>
 <p><code>buddy_topbar</code> - default: true - adds the deploy button to the admin bar</p>
 
-<p><code>buddy_capabilities</code> - default: manage_options - capability that is needed to show the deploy button</p>
+<p><code>buddy_capabilities</code> - default: manage_options - capability that is needed to see the deploy button</p>
