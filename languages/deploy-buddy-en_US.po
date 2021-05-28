@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-05-28 11:31+0200\n"
-"PO-Revision-Date: 2021-05-28 11:33+0200\n"
+"POT-Creation-Date: 2021-05-28 13:57+0200\n"
+"PO-Revision-Date: 2021-05-28 13:57+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: pl_PL\n"
@@ -19,7 +19,7 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: vendor\n"
 
 #: src/ManualDeploy.php:14
-msgid "Buddy Deploy"
+msgid "Deploy Buddy"
 msgstr ""
 
 #: src/ManualDeploy.php:42
@@ -30,23 +30,23 @@ msgstr ""
 msgid "Deployment triggered succesfully."
 msgstr ""
 
-#: src/Settings.php:40 templates/installation.php:6
+#: src/Settings.php:40 templates/installation.php:5
 msgid "Installation"
-msgstr "Instalacja"
+msgstr ""
 
 #: src/Settings.php:46
 msgid "Manual Deploy"
-msgstr "Ręczny Deployment"
+msgstr ""
 
 #: src/Settings.php:55
 msgid "You are not allowed to view this page"
-msgstr "Nie możesz wyświetlać tej strony"
+msgstr ""
 
-#: templates/installation.php:8
+#: templates/installation.php:7
 msgid "Get your webhook url"
-msgstr "Pobierz Twój webook url"
+msgstr ""
 
-#: templates/installation.php:12
+#: templates/installation.php:11
 msgid ""
 "<ol>\n"
 "\t<li>Login to your buddy.works account.</li>\n"
@@ -56,11 +56,11 @@ msgid ""
 "</ol>"
 msgstr ""
 
-#: templates/installation.php:21
+#: templates/installation.php:20
 msgid "Configure the plugin"
-msgstr "Konfiguracja wtyczki"
+msgstr ""
 
-#: templates/installation.php:25
+#: templates/installation.php:24
 msgid ""
 "<p>Currently the plugin is only configurable by constants that you can set "
 "in your <code>wp-config.php</code> file.</p>\n"
@@ -72,11 +72,11 @@ msgid ""
 "</code></pre></p>"
 msgstr ""
 
-#: templates/installation.php:35
+#: templates/installation.php:34
 msgid "Other constants"
-msgstr "Inne stałe"
+msgstr ""
 
-#: templates/installation.php:38
+#: templates/installation.php:37
 msgid ""
 "<p><code>buddy_topbar</code> - default: true - adds the deploy button to the "
 "admin bar</p>\n"
@@ -87,7 +87,7 @@ msgstr ""
 
 #: templates/manual_deploy.php:5
 msgid "Execute manual deployment"
-msgstr "Wywołaj ręczny deployment"
+msgstr ""
 
 #: templates/manual_deploy.php:7
 msgid ""
@@ -97,4 +97,4 @@ msgstr ""
 
 #: templates/manual_deploy.php:10
 msgid "Deploy"
-msgstr "Deploy"
+msgstr ""

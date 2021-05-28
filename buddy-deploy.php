@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Buddy Deploy
+ * Plugin Name: Deploy Buddy
  * Description: Seamlessly trigger Buddy.works deploys from WordPress
  * Author: Maciek Palmowski
  * Version: 0.1.1
@@ -23,10 +23,10 @@ Config::init(
 		'dir'           => __DIR__,
 		'base_name'     => plugin_basename( __FILE__ ),
 		'plugin_url'    => plugin_dir_url( __FILE__ ),
-		'slug'          => 'buddy-deploy',
-		'language_slug' => 'buddy_deploy',
-		'name'          => 'Buddy Deploy',
-		'shortname'     => 'Buddy Deploy',
+		'slug'          => 'deploy-buddy',
+		'language_slug' => 'deploy-buddy',
+		'name'          => 'Deploy Buddy',
+		'shortname'     => 'Deploy Buddy',
 		'webhook'       => defined( 'buddy_webhook' ) ? buddy_webhook : false,
 		'add_to_topbar' => defined( 'buddy_topbar' ) ? buddy_topbar : true,
 		'capabilities'  => defined( 'buddy_capabilities' ) ? buddy_capabilities : 'manage_options',

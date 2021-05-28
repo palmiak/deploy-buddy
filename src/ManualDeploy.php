@@ -11,7 +11,7 @@ class ManualDeploy {
 		if ( capabilities_helper( 'top_bar' ) ) {
 			$args = array(
 				'id'    => 'buddy_manual_deploy_button',
-				'title' => '<span class="ab-icon"></span>' . __( 'Buddy Deploy', Config::get( 'language_slug' ) ),
+				'title' => '<span class="ab-icon"></span>' . __( 'Deploy Buddy', Config::get( 'language_slug' ) ),
 				'href'  => '#',
 				'meta'  => array( 'class' => 'buddy_manual_deploy_button' ),
 			);

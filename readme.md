@@ -1,6 +1,6 @@
 ![](assets/images/cover.png)
 
-# Buddy Deploy
+# Deploy Buddy
 Seamlessly trigger Buddy.works deploys from WordPress.
 
 ## Plugin Installation

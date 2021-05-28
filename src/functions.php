@@ -30,7 +30,7 @@ function uninstall() {
  * @return void
  */
 function print_requirements_notice() {     // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
-	error_log( 'Buddy Deploy requirements are not met. Please read the Installation instructions.' );
+	error_log( 'Deploy Buddy requirements are not met. Please read the Installation instructions.' );
 
 	if ( ! current_user_can( 'activate_plugins' ) ) {
 		return;
