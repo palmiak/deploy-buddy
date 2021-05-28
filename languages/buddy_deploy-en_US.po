@@ -1,0 +1,100 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-05-28 11:31+0200\n"
+"PO-Revision-Date: 2021-05-28 11:33+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pl_PL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.3\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
+"|| n%100>14) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .git\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#: src/ManualDeploy.php:14
+msgid "Buddy Deploy"
+msgstr ""
+
+#: src/ManualDeploy.php:42
+msgid "Are you sure that you want to trigger a deployment?"
+msgstr ""
+
+#: src/ManualDeploy.php:47
+msgid "Deployment triggered succesfully."
+msgstr ""
+
+#: src/Settings.php:40 templates/installation.php:6
+msgid "Installation"
+msgstr "Instalacja"
+
+#: src/Settings.php:46
+msgid "Manual Deploy"
+msgstr "Ręczny Deployment"
+
+#: src/Settings.php:55
+msgid "You are not allowed to view this page"
+msgstr "Nie możesz wyświetlać tej strony"
+
+#: templates/installation.php:8
+msgid "Get your webhook url"
+msgstr "Pobierz Twój webook url"
+
+#: templates/installation.php:12
+msgid ""
+"<ol>\n"
+"\t<li>Login to your buddy.works account.</li>\n"
+"\t<li>Go to your project and than select the pipeline you want to execute.</"
+"li>\n"
+"\t<li>Click <strong>Webhook URL</strong> in the sidebar and copy URL.</li>\n"
+"</ol>"
+msgstr ""
+
+#: templates/installation.php:21
+msgid "Configure the plugin"
+msgstr "Konfiguracja wtyczki"
+
+#: templates/installation.php:25
+msgid ""
+"<p>Currently the plugin is only configurable by constants that you can set "
+"in your <code>wp-config.php</code> file.</p>\n"
+"\n"
+"<p>The only required constant is the <code>buddy_webhook</code>, where you "
+"have to paste the webhook URL.</p>\n"
+"\n"
+"<p><pre><code>define( 'buddy_webhook', PASTE_URL_HERE );\n"
+"</code></pre></p>"
+msgstr ""
+
+#: templates/installation.php:35
+msgid "Other constants"
+msgstr "Inne stałe"
+
+#: templates/installation.php:38
+msgid ""
+"<p><code>buddy_topbar</code> - default: true - adds the deploy button to the "
+"admin bar</p>\n"
+"\n"
+"<p><code>buddy_capabilities</code> - default: manage_options - capability "
+"that is needed to see the deploy button</p>\n"
+msgstr ""
+
+#: templates/manual_deploy.php:5
+msgid "Execute manual deployment"
+msgstr "Wywołaj ręczny deployment"
+
+#: templates/manual_deploy.php:7
+msgid ""
+"<p>By pressing the <strong>deploy</strong> button you will trigger the "
+"endpoint you selected.</p>"
+msgstr ""
+
+#: templates/manual_deploy.php:10
+msgid "Deploy"
+msgstr "Deploy"

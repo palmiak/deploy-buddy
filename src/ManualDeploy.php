@@ -44,7 +44,7 @@ class ManualDeploy {
 							type: "POST",
 							url: "' . Config::get( 'webhook' ) . '&comment=Manually triggered deployment",
 							success: function( d ) {
-								window.alert( "Successfully triggered deploy" )
+								window.alert( "' . __( 'Deployment triggered succesfully.', Config::get( 'language_slug' ) ) . '" )
 							}
 						} )
 					}
@@ -68,7 +68,7 @@ class ManualDeploy {
 					width: 18px;
 					transform: translateY(2px);
 					background-repeat: no-repeat;
-					background-image: url( '<?php echo plugin_dir_url( Config::get( 'baseName' ) ); ?>assets/images/logo.svg' );
+					background-image: url( '<?php echo plugin_dir_url( Config::get( 'base_name' ) ); ?>assets/images/logo.svg' );
 				}
 			</style>
 		<?php

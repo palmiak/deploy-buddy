@@ -2,7 +2,7 @@
 namespace BuddyIntegration;
 
 function load_text_domain() {
-	 load_plugin_textdomain( Config::get( 'slug' ), false, dirname( Config::get( 'baseName' ) ) . '/languages' );
+	 load_plugin_textdomain( Config::get( 'language_slug' ), false, dirname( Config::get( 'base_name' ) ) . '/languages' );
 }
 
 /**
@@ -30,7 +30,7 @@ function uninstall() {
  * @return void
  */
 function print_requirements_notice() {     // phpcs:ignore Squiz.PHP.DiscouragedFunctions.Discouraged
-	error_log( 'Plugin Name requirements are not met. Please read the Installation instructions.' );
+	error_log( 'Buddy Deploy requirements are not met. Please read the Installation instructions.' );
 
 	if ( ! current_user_can( 'activate_plugins' ) ) {
 		return;

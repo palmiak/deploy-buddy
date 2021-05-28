@@ -1,3 +1,5 @@
+![](assets/images/cover.png)
+
 # Buddy Deploy
 Seamlessly trigger Buddy.works deploys from WordPress.
 
@@ -24,3 +26,15 @@ define( 'buddy_webhook', PASTE_URL_HERE );
 `buddy_topbar` - default: true - adds the deploy button to the admin bar
 
 `buddy_capabilities` - default: manage_options - capability that is needed to see the deploy button
+
+## Changelog
+**0.1.1**
+- Fixed some minor bugs.
+- Plugin is fully translatable
+
+**0.1.0**
+Initial release
+
+## Roadmap
+- Automatic deployments based on post type and post status.
+- Adding admin panel instead of setting everything via constants.

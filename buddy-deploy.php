@@ -3,14 +3,12 @@
  * Plugin Name: Buddy Deploy
  * Description: Seamlessly trigger Buddy.works deploys from WordPress
  * Author: Maciek Palmowski
- * Version: 0.1.0
+ * Version: 0.1.1
  * Author URI: https://wpowls.co/
  * Text-domain: buddy_deploy
- *
  */
-namespace BuddyIntegration;
 
-use BuddyIntegration;
+namespace BuddyIntegration;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -21,9 +19,10 @@ require_once __DIR__ . '/vendor/autoload.php';
 Config::init(
 	array(
 		'version'       => '1.0.0',
-		'filePath'      => __FILE__,
+		'file_path'     => __FILE__,
 		'dir'           => __DIR__,
-		'baseName'      => plugin_basename( __FILE__ ),
+		'base_name'     => plugin_basename( __FILE__ ),
+		'plugin_url'    => plugin_dir_url( __FILE__ ),
 		'slug'          => 'buddy-deploy',
 		'language_slug' => 'buddy_deploy',
 		'name'          => 'Buddy Deploy',
