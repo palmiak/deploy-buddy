@@ -3,7 +3,7 @@
  * Plugin Name: Deploy Buddy
  * Description: Seamlessly trigger Buddy.works deploys from WordPress
  * Author: Maciek Palmowski
- * Version: 0.1.1
+ * Version: 0.1.2
  * Author URI: https://wpowls.co/
  * Text-domain: buddy_deploy
  * GitHub Plugin URI: palmiak/deploy_buddy_plugin
