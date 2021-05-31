@@ -5,7 +5,7 @@ namespace BuddyIntegration;
 final class Settings {
 
 	function __construct() {
-		if ( $_GET['page'] === Config::get( 'clug' ) ) {
+		if ( isset( $_GET['page'] ) && $_GET['page'] === Config::get( 'slug' ) ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'include_styles' ) );
 		}
 	}
