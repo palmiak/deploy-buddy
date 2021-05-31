@@ -28,6 +28,9 @@ define( 'buddy_webhook', PASTE_URL_HERE );
 `buddy_capabilities` - default: manage_options - capability that is needed to see the deploy button
 
 ## Changelog
+**0.1.3**
+- Added GitUpdate link
+
 **0.1.2**
 - Made the admin panel a lot nicer
 - Fixed some minor bugs.
