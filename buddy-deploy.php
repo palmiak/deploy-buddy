@@ -18,7 +18,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 Config::init(
 	array(
-		'version'       => '1.0.0',
+		'version'       => '0.1.2',
 		'file_path'     => __FILE__,
 		'dir'           => __DIR__,
 		'base_name'     => plugin_basename( __FILE__ ),

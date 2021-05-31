@@ -5,6 +5,9 @@ namespace BuddyIntegration;
 final class Settings {
 
 	function __construct() {
+		if ( $_GET['page'] === Config::get( 'clug' ) ) {
+			add_action( 'admin_enqueue_scripts', array( $this, 'include_styles' ) );
+		}
 	}
 
 	/**
@@ -21,17 +24,22 @@ final class Settings {
 		);
 	}
 
+	function include_styles() {
+		wp_enqueue_style( 'buddy_admin', Config::get( 'plugin_url' ) . 'assets/css/admin.css', array(), Config::get( 'version' ) );
+	}
+
 	function options_page_html() {
-		if ( ! current_user_can( 'manage_options' ) ) {
+		if ( ! current_user_can( Config::get( 'capabilities' ) ) ) {
 			return;
 		}
-
 		$default_tab = null;
 		$tab         = isset( $_GET['tab'] ) ? $_GET['tab'] : $default_tab;
 
 		?>
+		<?php
+			include Config::get( 'dir' ) . '/templates/header.php';
+		?>
 		<div class="wrap">
-			<h1><?php echo Config::get( 'name' ); ?></h1>
 			<nav class="nav-tab-wrapper">
 				<a href="?page=<?php echo Config::get( 'slug' ); ?>" class="nav-tab
 				<?php
@@ -63,6 +71,9 @@ final class Settings {
 				?>
 			</div>
 		</div>
+		<?php
+			include Config::get( 'dir' ) . '/templates/footer.php';
+		?>
 		<?php
 	}
 }
