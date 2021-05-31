@@ -27,6 +27,7 @@ Config::init(
 		'language_slug' => 'deploy-buddy',
 		'name'          => 'Deploy Buddy',
 		'shortname'     => 'Deploy Buddy',
+		'utm'           => 'https://buddy.works/?utm_medium=referral&utm_campaign=deploy_buddy_plugin',
 		'webhook'       => defined( 'buddy_webhook' ) ? buddy_webhook : false,
 		'add_to_topbar' => defined( 'buddy_topbar' ) ? buddy_topbar : true,
 		'capabilities'  => defined( 'buddy_capabilities' ) ? buddy_capabilities : 'manage_options',
