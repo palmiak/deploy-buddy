@@ -6,7 +6,7 @@
  * Version: 0.1.2
  * Author URI: https://wpowls.co/
  * Text-domain: buddy_deploy
- * GitHub Plugin URI: palmiak/deploy_buddy_plugin
+ * GitHub Plugin URI: palmiak/deploy-buddy
  */
 
 namespace BuddyIntegration;
