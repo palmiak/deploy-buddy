@@ -39,7 +39,7 @@ function print_requirements_notice() {     // phpcs:ignore Squiz.PHP.Discouraged
 	printf(
 		'<div class="notice notice-error"><p>%1$s <a href="%2$s">%3$s</a> %4$s</p></div>',
 		esc_html__( 'Webhook not set! Please read', Config::get( 'language_slug' ) ),
-		esc_url( 'admin.php?page=integration-with-buddy' ),
+		esc_url( 'admin.php?page=' . Config::get( 'slug' ) ),
 		esc_html__( 'the Installation instructions', Config::get( 'language_slug' ) ),
 		esc_html__( 'on how to setup the plugin.', Config::get( 'language_slug' ) )
 	);
