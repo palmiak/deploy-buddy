@@ -7,6 +7,9 @@ Seamlessly trigger Buddy.works deploys from WordPress.
 1. Download the latest zip from [releases](https://github.com/palmiak/buddy_deploy/releases/)
 2. Upload the plugin in WordPress admin panel
 
+## Updates
+If you want to keep this plugin up-to-date install and configure https://github.com/afragen/git-updater. 
+
 ## Get your webhook url
 1. Login to your [buddy.works](http://buddy.works) account.
 2. Go to your project and than select the pipeline you want to execute.
@@ -29,7 +32,7 @@ define( 'buddy_webhook', PASTE_URL_HERE );
 
 ## Changelog
 **0.1.3**
-- Added GitUpdate link
+- Updates are made with [Git Updater](https://github.com/afragen/git-updater)
 
 **0.1.2**
 - Made the admin panel a lot nicer
