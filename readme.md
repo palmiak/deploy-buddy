@@ -31,6 +31,9 @@ define( 'buddy_webhook', PASTE_URL_HERE );
 `buddy_capabilities` - default: manage_options - capability that is needed to see the deploy button
 
 ## Changelog
+**0.1.4**
+- You can install and mange the plugin with composer. Just run `composer require buddy/deploy-buddy`.
+
 **0.1.3**
 - Updates are made with [Git Updater](https://github.com/afragen/git-updater)
 
