@@ -1,6 +1,7 @@
 {
     "name": "buddy/buddy-deploy",
-		"version": "0.1.0",
+	"description": "Seamlessly trigger Buddy.works deploys from WordPress.",
+	"license": "MIT",
     "authors": [
         {
             "name": "Maciej Palmowski",
