@@ -18,7 +18,7 @@ jobs:
         run: echo "::set-output name=tag::${GITHUB_REF#refs/tags/}"
 
       - name: Build project
-        run: git archive -o /tmp/deploy-buddy-${{ steps.tag.outputs.tag }}.zip --prefix=git archive -o/ ${{ steps.tag.outputs.tag }}
+        run: git archive -o /tmp/deploy-buddy-${{ steps.tag.outputs.tag }}.zip --prefix=deploy-buddy ${{ steps.tag.outputs.tag }}
 
       - name: Create Release
         id: create_release
