@@ -1,6 +1,7 @@
 {
-    "name": "buddy/buddy-deploy",
+    "name": "buddy/deploy-buddy",
 	"description": "Seamlessly trigger Buddy.works deploys from WordPress.",
+	"type": "wordpress-plugin",
 	"license": "MIT",
     "authors": [
         {
@@ -8,7 +9,9 @@
             "email": "m.palmowski@freshpixels.pl"
         }
     ],
-    "require": {},
+    "require": {
+        "composer/installers": "^1.11"
+    },
 	"autoload": {
 		"psr-4": {
 		  "BuddyIntegration\\":"src/"
