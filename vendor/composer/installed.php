@@ -5,7 +5,7 @@
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'c50a24db635c1b0fc0b3761ac6c61f4c3f38b803',
+        'reference' => 'e48eafbb80e59457b38606614798bb8769a388ad',
         'name' => 'buddy/deploy-buddy',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'c50a24db635c1b0fc0b3761ac6c61f4c3f38b803',
+            'reference' => 'e48eafbb80e59457b38606614798bb8769a388ad',
             'dev_requirement' => false,
         ),
         'composer/installers' => array(
