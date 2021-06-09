@@ -16,6 +16,11 @@ jobs:
       - name: Get tag
         id: tag
         run: echo "::set-output name=tag::${GITHUB_REF#refs/tags/}"
+        
+      - name: composer-php
+        uses: nick-zh/composer@php7.4
+        with:
+          action: update
 
       - name: Build project
         run: git archive -o /tmp/deploy-buddy-${{ steps.tag.outputs.tag }}.zip ${{ steps.tag.outputs.tag }}
