@@ -60,8 +60,8 @@ function requirements_met() {
 
 function capabilities_helper( $type ) {
 	$sets = array(
-		'top_bar'       => is_admin_bar_showing() && Config::get( 'webhook' ) !== false && Config::get( 'manual_deploy' ) && current_user_can( Config::get( 'capabilities' ) ),
-		'manual_deploy' => Config::get( 'webhook' ) !== false && Config::get( 'manual_deploy' ) && current_user_can( Config::get( 'capabilities' ) ),
+		'top_bar'       => is_admin_bar_showing() && ! empty( Config::get( 'webhook' ) ) && Config::get( 'manual_deploy' ) && current_user_can( Config::get( 'capabilities' ) ),
+		'manual_deploy' => ! empty( Config::get( 'webhook' ) ) && Config::get( 'manual_deploy' ) && current_user_can( Config::get( 'capabilities' ) ),
 	);
 
 	return isset( $sets[ $type ] ) ? $sets[ $type ] : false;

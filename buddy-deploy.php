@@ -3,7 +3,7 @@
  * Plugin Name: Deploy Buddy
  * Description: Seamlessly trigger Buddy.works deploys from WordPress
  * Author: Maciek Palmowski
- * Version: 0.1.4
+ * Version: 0.1.5
  * Author URI: https://wpowls.co/
  * Text-domain: buddy_deploy
  * GitHub Plugin URI: palmiak/deploy-buddy
@@ -19,7 +19,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 Config::init(
 	array(
-		'version'       => '0.1.3',
+		'version'       => '0.1.5',
 		'file_path'     => __FILE__,
 		'dir'           => __DIR__,
 		'base_name'     => plugin_basename( __FILE__ ),
