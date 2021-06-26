@@ -25,12 +25,26 @@ Example:
 define( 'buddy_webhook', PASTE_URL_HERE );
 ```
 
-### Other constants
+## Automatic Deployments
+After enabling the automating deployments by setting `buddy_automatic_deploy` to true, every time that user with a minimal capability set with `buddy_automatic_deploy_capabilities` constant will publish, unpublish or update a post from a post type set with `buddy_automatic_deploy_post_types` constant **Buddy's** pipeline will be triggered.
+
+## Other constants
 `buddy_topbar` - default: true - adds the deploy button to the admin bar
 
-`buddy_capabilities` - default: manage_options - capability that is needed to see the deploy button
+`buddy_manual_deploy_capabilities` - default: manage_options - capability that is needed to see the deploy button
+
+`buddy_capabilities_options` - default: manage_options - capability that is needed to view options panel.
+
+`buddy_automatic_deploy` = default: false - enables automatic deployments
+
+`buddy_automatic_deploy_post_types` - default: ['post', 'page'] - post types on which the auto deployment will run.
+
+`buddy_automatic_deploy_capabilities` - default: manage_options - capability needed to trigger the auto deploy.
 
 ## Changelog
+**0.2.0**
+- Added automatic deployments.
+
 **0.1.5**
 - Minor fix for empty webhook.
 

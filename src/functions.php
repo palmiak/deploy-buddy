@@ -59,12 +59,25 @@ function requirements_met() {
 }
 
 function capabilities_helper( $type ) {
-	$sets = array(
-		'top_bar'       => is_admin_bar_showing() && ! empty( Config::get( 'webhook' ) ) && Config::get( 'manual_deploy' ) && current_user_can( Config::get( 'capabilities' ) ),
-		'manual_deploy' => ! empty( Config::get( 'webhook' ) ) && Config::get( 'manual_deploy' ) && current_user_can( Config::get( 'capabilities' ) ),
-	);
+	if ( function_exists( 'BuddyIntegration\\' . $type ) ) {
+		return call_user_func( 'BuddyIntegration\\' . $type );
+	}
 
-	return isset( $sets[ $type ] ) ? $sets[ $type ] : false;
+	return false;
 }
 
+function top_bar() {
+	return is_admin_bar_showing() && ! empty( Config::get( 'webhook' ) ) && Config::get( 'manual_deploy' ) && current_user_can( Config::get( 'manual_deploy_capabilities' ) );
+}
 
+function manual_deploy() {
+	return ! empty( Config::get( 'webhook' ) ) && Config::get( 'manual_deploy' ) && current_user_can( Config::get( 'manual_deploy_capabilities' ) );
+}
+
+function automatic_deploy() {
+	return ! empty( Config::get( 'webhook' ) ) && Config::get( 'automatic_deploy' ) && ! empty( Config::get( 'automatic_deploy_post_types' ) ) && current_user_can( Config::get( 'automatic_deploy_capabilities' ) );
+}
+
+function edit_options() {
+	return current_user_can( Config::get( 'capabilities_options' ) );
+}

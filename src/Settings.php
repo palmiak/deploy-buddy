@@ -18,7 +18,7 @@ final class Settings {
 			'tools.php',
 			Config::get( 'name' ) . ' - Options',
 			Config::get( 'shortname' ),
-			Config::get( 'capabilities' ),
+			Config::get( 'capabilities_options' ),
 			Config::get( 'slug' ),
 			array( $this, 'options_page_html' )
 		);
@@ -29,9 +29,6 @@ final class Settings {
 	}
 
 	function options_page_html() {
-		if ( ! current_user_can( Config::get( 'capabilities' ) ) ) {
-			return;
-		}
 		$default_tab = null;
 		$tab         = isset( $_GET['tab'] ) ? $_GET['tab'] : $default_tab;
 
@@ -46,23 +43,26 @@ final class Settings {
 				if ( null === $tab ) :
 					?>
 					nav-tab-active<?php endif; ?>"><?php _e( 'Installation', Config::get( 'language_slug' ) ); ?></a>
-				<?php if ( capabilities_helper( 'manual_deploy' ) ) : ?>
 				<a href="?page=<?php echo Config::get( 'slug' ); ?>&tab=manual_deploy" class="nav-tab
 					<?php
 					if ( 'manual_deploy' === $tab ) :
 						?>
 					nav-tab-active<?php endif; ?>"><?php _e( 'Manual Deploy', Config::get( 'language_slug' ) ); ?></a>
-				<?php endif; ?>
+				<a href="?page=<?php echo Config::get( 'slug' ); ?>&tab=automatic_deploy" class="nav-tab
+					<?php
+					if ( 'automatic_deploy' === $tab ) :
+						?>
+					nav-tab-active<?php endif; ?>"><?php _e( 'Automatic Deploy', Config::get( 'language_slug' ) ); ?></a>
 			</nav>
 
 			<div class="tabs-content">
 				<?php
 				switch ( $tab ) :
 					case 'manual_deploy':
-						if ( ! ( capabilities_helper( 'manual_deploy' ) ) ) {
-							wp_die( __( 'You are not allowed to view this page', Config::get( 'language_slug' ) ) );
-						}
 						include Config::get( 'dir' ) . '/templates/manual_deploy.php';
+						break;
+					case 'automatic_deploy':
+						include Config::get( 'dir' ) . '/templates/automatic_deploy.php';
 						break;
 					default:
 						include Config::get( 'dir' ) . '/templates/installation.php';

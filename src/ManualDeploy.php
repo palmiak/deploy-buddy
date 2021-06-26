@@ -3,11 +3,11 @@ namespace BuddyIntegration;
 
 class ManualDeploy {
 	function __construct() {
-		add_action( 'admin_bar_menu', array( $this, 'deploy_button' ), 999 );
-		add_action( 'init', array( $this, 'manual_deploy_initialize' ) );
+		add_action( 'admin_bar_menu', array( $this, 'add_button' ), 999 );
+		add_action( 'init', array( $this, 'initialize' ) );
 	}
 
-	function deploy_button( $wp_admin_bar ) {
+	function add_button( $wp_admin_bar ) {
 		if ( capabilities_helper( 'top_bar' ) ) {
 			$args = array(
 				'id'    => 'buddy_manual_deploy_button',
@@ -20,16 +20,16 @@ class ManualDeploy {
 	}
 
 
-	function manual_deploy_initialize() {
+	function initialize() {
 		if ( capabilities_helper( 'manual_deploy' ) ) {
-			add_action( 'admin_enqueue_scripts', array( $this, 'manual_trigger_script' ) );
+			add_action( 'admin_enqueue_scripts', array( $this, 'trigger_script' ) );
 			add_action( 'wp_enqueue_scripts', array( $this, 'manual_trigger_script' ) );
 			add_action( 'wp_head', array( $this, 'topbar_button_icon_styles' ) );
 			add_action( 'admin_head', array( $this, 'topbar_button_icon_styles' ) );
 		}
 	}
 
-	function manual_trigger_script() {
+	function trigger_script() {
 		if ( ! is_admin() && ! wp_script_is( 'jquery', 'done' ) ) {
 			wp_enqueue_script( 'jquery' );
 		}

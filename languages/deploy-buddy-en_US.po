@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-05-31 15:24+0200\n"
-"PO-Revision-Date: 2021-05-31 15:24+0200\n"
+"POT-Creation-Date: 2021-06-26 12:48+0200\n"
+"PO-Revision-Date: 2021-06-26 12:48+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
+"X-Generator: Poedit 3.0\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Deployment triggered succesfully."
 msgstr ""
 
-#: src/Settings.php:48 templates/installation.php:6
+#: src/Settings.php:48
 msgid "Installation"
 msgstr ""
 
@@ -37,8 +37,38 @@ msgstr ""
 msgid "Manual Deploy"
 msgstr ""
 
-#: src/Settings.php:63
+#: src/Settings.php:61
+msgid "Automatic Deploy"
+msgstr ""
+
+#: src/Settings.php:70 src/Settings.php:76
 msgid "You are not allowed to view this page"
+msgstr ""
+
+#: templates/automatic_deploy.php:7
+msgid "Automatic Deployments"
+msgstr ""
+
+#: templates/automatic_deploy.php:9
+#, php-format
+msgid ""
+"<p>Each time a member with at least <strong>%s</strong> capability will save "
+"or update a post from this post types:<br/> <strong>%s</strong><br/> the "
+"auto deploy will run."
+msgstr ""
+
+#: templates/automatic_deploy.php:11
+msgid ""
+"<p>If you want to change the capability needed to trigger the auto deploy, "
+"add <code>buddy_automatic_deploy_capabilities</code> constant to wp-config."
+"php file."
+msgstr ""
+
+#: templates/automatic_deploy.php:13
+msgid ""
+"<p>If you want to change the post types, add "
+"<code>buddy_automatic_deploy_post_types</code> constant to wp-config.php "
+"file."
 msgstr ""
 
 #: templates/header.php:11
@@ -47,6 +77,10 @@ msgstr ""
 
 #: templates/header.php:12
 msgid "Report an issue"
+msgstr ""
+
+#: templates/installation.php:6
+msgid "Installation and usage"
 msgstr ""
 
 #: templates/installation.php:8
@@ -76,22 +110,27 @@ msgid ""
 "\t<p>The only required constant is the <code>buddy_webhook</code>, where you "
 "have to paste the webhook URL.</p>\n"
 "\n"
-"\t<p><pre><code>define( 'buddy_webhook', PASTE_URL_HERE );\n"
-"\t</code></pre></p>"
+"\t<p><pre><code>define( 'buddy_webhook', PASTE_URL_HERE );</code></pre></p>"
 msgstr ""
 
-#: templates/installation.php:35
+#: templates/installation.php:34
 msgid "Other constants"
 msgstr ""
 
-#: templates/installation.php:38
+#: templates/installation.php:37
 msgid ""
 "<p><code>buddy_topbar</code> - default: true - adds the deploy button to the "
 "admin bar</p>\n"
-"\n"
-"\t<p><code>buddy_capabilities</code> - default: manage_options - capability "
-"that is needed to see the deploy button</p>\n"
-"\t"
+"\t\t<p><code>buddy_capabilities</code> - default: manage_options - "
+"capability that is needed to see the deploy button</p>\n"
+"\t\t<p><code>buddy_automatic_deploy</code> - default: false - turn on or off "
+"automatic deployments on post update.</p>\n"
+"\t\t<p><code>buddy_automatic_deploy_post_types</code> - default: ['post', "
+"'page'] - sets on which post types does the update triggers the auto deploy."
+"</p>\n"
+"\t\t<p><code>buddy_automatic_deploy_capabilities</code> - default: "
+"manage_options - capability that is need to run the auto deploy. </p>\n"
+"\t\t"
 msgstr ""
 
 #: templates/manual_deploy.php:7
