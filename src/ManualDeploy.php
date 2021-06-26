@@ -23,7 +23,7 @@ class ManualDeploy {
 	function initialize() {
 		if ( capabilities_helper( 'manual_deploy' ) ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'trigger_script' ) );
-			add_action( 'wp_enqueue_scripts', array( $this, 'manual_trigger_script' ) );
+			add_action( 'wp_enqueue_scripts', array( $this, 'trigger_script' ) );
 			add_action( 'wp_head', array( $this, 'topbar_button_icon_styles' ) );
 			add_action( 'admin_head', array( $this, 'topbar_button_icon_styles' ) );
 		}

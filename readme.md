@@ -35,13 +35,16 @@ After enabling the automating deployments by setting `buddy_automatic_deploy` to
 
 `buddy_capabilities_options` - default: manage_options - capability that is needed to view options panel.
 
-`buddy_automatic_deploy` = default: false - enables automatic deployments
+`buddy_automatic_deploy` - default: false - enables automatic deployments
 
 `buddy_automatic_deploy_post_types` - default: ['post', 'page'] - post types on which the auto deployment will run.
 
 `buddy_automatic_deploy_capabilities` - default: manage_options - capability needed to trigger the auto deploy.
 
 ## Changelog
+**0.2.1**
+- Fixed a minor bug and a typo in readme.
+
 **0.2.0**
 - Added automatic deployments.
 
