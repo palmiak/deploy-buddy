@@ -55,7 +55,7 @@ function boot() {
 }
 
 function requirements_met() {
-	return defined( 'buddy_webhook' ) ? true : false;
+	return ( options_helper( 'buddy_webhook', false ) !== false ) ? true : false;
 }
 
 function capabilities_helper( $type ) {
@@ -80,4 +80,15 @@ function automatic_deploy() {
 
 function edit_options() {
 	return current_user_can( Config::get( 'capabilities_options' ) );
+}
+
+function options_helper( $key_name, $default ) {
+
+	if ( defined( $key_name ) ) {
+		return constant( $key_name );
+	} elseif ( isset( get_option( 'options-page' )[ $key_name ] ) && ! empty( get_option( 'options-page' )[ $key_name ] ) ) {
+		return get_option( 'options-page' )[ $key_name ];
+	} else {
+		return $default;
+	}
 }
