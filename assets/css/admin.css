@@ -155,3 +155,12 @@
     box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
     margin: 30px .5em;
 }
+
+.buddy-wrapper h3.cmb2-metabox-title {
+	font-size: 1.3em;
+	margin-top: 30px;
+}
+
+.buddy-wrapper .cmb-type-title {
+	border-bottom:#ccc 1px solid;
+}

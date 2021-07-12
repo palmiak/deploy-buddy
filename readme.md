@@ -28,7 +28,7 @@ define( 'buddy_webhook', PASTE_URL_HERE );
 ## Automatic Deployments
 After enabling the automating deployments by setting `buddy_automatic_deploy` to true, every time that user with a minimal capability set with `buddy_automatic_deploy_capabilities` constant will publish, unpublish or update a post from a post type set with `buddy_automatic_deploy_post_types` constant **Buddy's** pipeline will be triggered.
 
-## Other constants
+## Available constants
 `buddy_topbar` - default: true - adds the deploy button to the admin bar
 
 `buddy_manual_deploy_capabilities` - default: manage_options - capability that is needed to see the deploy button
@@ -42,6 +42,9 @@ After enabling the automating deployments by setting `buddy_automatic_deploy` to
 `buddy_automatic_deploy_capabilities` - default: manage_options - capability needed to trigger the auto deploy.
 
 ## Changelog
+**1.0.0**
+- Added a **configuration** tab. Since now using constants is not required.
+
 **0.2.1**
 - Fixed a minor bug and a typo in readme.
 
