@@ -16,17 +16,7 @@ If you want to keep this plugin up-to-date install and configure https://github.
 3. Click **Webhook URL** in the sidebar and copy URL.
 
 ## Configuration
-Currently the plugin is only configurable by constants that you can set in your `wp-config.php` file.
-
-The only required constant is the `buddy_webhook`, where you have to paste the webhook URL.
-
-Example:
-```php
-define( 'buddy_webhook', PASTE_URL_HERE );
-```
-
-## Automatic Deployments
-After enabling the automating deployments by setting `buddy_automatic_deploy` to true, every time that user with a minimal capability set with `buddy_automatic_deploy_capabilities` constant will publish, unpublish or update a post from a post type set with `buddy_automatic_deploy_post_types` constant **Buddy's** pipeline will be triggered.
+Currently the plugin is configurable by using the UI or by using constants in your `wp-config.php` file.
 
 ## Available constants
 `buddy_topbar` - default: true - adds the deploy button to the admin bar
