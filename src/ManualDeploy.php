@@ -33,11 +33,36 @@ class ManualDeploy {
 		if ( ! is_admin() && ! wp_script_is( 'jquery', 'done' ) ) {
 			wp_enqueue_script( 'jquery' );
 		}
+
+		/*
+		var link_id = "buddy_manual_gutenberg_button";
+
+				var link_html = \'<span class="buddy_manual_deploy_button"><a id="\' + link_id + \'" class="ab-item" href="#" ><span class="ab-icon">Deploy Buddy</span></a></span>\';
+
+				const isFullscreenMode = ( wp.data.select( "core/edit-post" ) !== null ) ? wp.data.select( "core/edit-post" ).isFeatureActive( "fullscreenMode" ) : false;
+
+				var editorEl = document.getElementById( "editor" );
+				if( !editorEl || !isFullscreenMode ){
+					return;
+				}
+
+				var unsubscribe = wp.data.subscribe( function () {
+					setTimeout( function () {
+						if ( !document.getElementById( link_id ) ) {
+							var toolbalEl = editorEl.querySelector( ".edit-post-header__toolbar" );
+							if( toolbalEl instanceof HTMLElement ){
+								toolbalEl.insertAdjacentHTML( "beforeend", link_html );
+							}
+						}
+					}, 1 )
+				} );
+				*/
 		wp_add_inline_script(
 			'jquery',
 			'
 			jQuery( document ).ready( function() {
-				jQuery( ".buddy_manual_deploy_button a, input.buddy_manual_deploy_button" ).on( "click", function( e ) {
+
+				jQuery( document ).on( "click", ".buddy_manual_deploy_button a, input.buddy_manual_deploy_button", function( e ) {
 					event.preventDefault();
 					if ( confirm( " '. __( 'Are you sure that you want to trigger a deployment?', Config::get( 'language_slug' ) ) . '" ) ) {
 						jQuery.ajax( {

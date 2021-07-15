@@ -5,14 +5,31 @@ namespace BuddyIntegration;
 final class Settings {
 
 	var $capabilities;
+	var $cmb_form;
 
 	function __construct() {
 		if ( isset( $_GET['page'] ) && $_GET['page'] === Config::get( 'slug' ) ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'include_styles' ) );
 		}
 		add_action( 'cmb2_admin_init', array( $this, 'register_metabox' ) );
+		add_filter( 'cmb2_sanitize_on_off', array( $this, 'cmb2_sanitize_on_off_callback' ), 11, 2 );
+		add_action( 'cmb2_render_on_off', array( $this, 'cmb2_render_on_off_callback' ), 10, 5 );
+		add_action( 'cmb2_admin_init', array( $this, 'init_form' ) );
+		add_action( 'cmb2_save_options-page_fields', array( $this, 'force_redirect' ) );
+		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 	}
 
+	function force_redirect() {
+		$url = admin_url( 'tools.php?page=deploy-buddy&tab=configuration' );
+		wp_redirect( $url );
+	}
+
+	function init_form() {
+		$tab         = isset( $_GET['tab'] ) ? $_GET['tab'] : '';
+		if( $tab === 'configuration' ) {
+			$this->cmb_form = cmb2_get_metabox_form( 'options_metabox', 'options-page' );
+		}
+	}
 	/**
 	 * Add the top level menu page.
 	 */
@@ -42,13 +59,8 @@ final class Settings {
 		<div class="wrap">
 			<nav class="nav-tab-wrapper">
 				<a href="?page=<?php echo Config::get( 'slug' ); ?>" class="nav-tab
-				<?php
-				if ( null === $tab ) :
-					?>
-					nav-tab-active<?php endif; ?>"><?php _e( 'Installation', Config::get( 'language_slug' ) ); ?></a>
-				<a href="?page=<?php echo Config::get( 'slug' ); ?>&tab=manual_deploy" class="nav-tab
 					<?php
-					if ( 'manual_deploy' === $tab ) :
+					if ( null === $tab ) :
 						?>
 					nav-tab-active<?php endif; ?>"><?php _e( 'Manual Deploy', Config::get( 'language_slug' ) ); ?></a>
 				<a href="?page=<?php echo Config::get( 'slug' ); ?>&tab=automatic_deploy" class="nav-tab
@@ -66,9 +78,6 @@ final class Settings {
 			<div class="tabs-content">
 				<?php
 				switch ( $tab ) :
-					case 'manual_deploy':
-						include Config::get( 'dir' ) . '/templates/manual_deploy.php';
-						break;
 					case 'automatic_deploy':
 						include Config::get( 'dir' ) . '/templates/automatic_deploy.php';
 						break;
@@ -76,7 +85,7 @@ final class Settings {
 						include Config::get( 'dir' ) . '/templates/configuration.php';
 						break;
 					default:
-						include Config::get( 'dir' ) . '/templates/installation.php';
+						include Config::get( 'dir' ) . '/templates/manual_deploy.php';
 						break;
 				endswitch;
 				?>
@@ -92,7 +101,6 @@ final class Settings {
 		$cmb = new_cmb2_box(
 			array(
 				'id'           => 'options_metabox',
-				'hookup'       => false,
 				'object_types' => array( 'options-page' ),
 			)
 		);
@@ -109,10 +117,10 @@ final class Settings {
 
 			$cmb->add_field(
 				array(
-					'name' => __( 'Webhook', Config::get( 'language_slug' ) ),
-					'desc' => __( 'Enter your Buddy webhook', Config::get( 'language_slug' ) ),
-					'id'   => 'buddy_webhook',
-					'type' => 'text_url',
+					'name'      => __( 'Webhook', Config::get( 'language_slug' ) ),
+					'desc'      => __( 'Enter your Buddy webhook', Config::get( 'language_slug' ) ),
+					'id'        => 'buddy_webhook',
+					'type'      => 'text_url',
 					'protocols' => array( 'http', 'https' ),
 				)
 			);
@@ -133,8 +141,8 @@ final class Settings {
 					'name'    => __( 'Enable Manual Deployments', Config::get( 'language_slug' ) ),
 					'desc'    => __( 'Check to enable or disable manual deployments.', Config::get( 'language_slug' ) ),
 					'id'      => 'buddy_manual_deploy',
-					'type'    => 'checkbox',
-					'default' => 'true',
+					'type'    => 'on_off',
+					'default' => 'on',
 				)
 			);
 		}
@@ -145,8 +153,8 @@ final class Settings {
 					'name'    => __( 'Add deploy button to admin bar', Config::get( 'language_slug' ) ),
 					'desc'    => __( 'Adds deployment button to admin bar.', Config::get( 'language_slug' ) ),
 					'id'      => 'buddy_topbar',
-					'type'    => 'checkbox',
-					'default' => true,
+					'type'    => 'on_off',
+					'default' => 'on',
 				)
 			);
 		}
@@ -179,8 +187,8 @@ final class Settings {
 					'name'    => __( 'Enable Automatic Deployments', Config::get( 'language_slug' ) ),
 					'desc'    => __( 'Check to enable or disable automatic deployments.', Config::get( 'language_slug' ) ),
 					'id'      => 'buddy_automatic_deploy',
-					'type'    => 'checkbox',
-					'default' => false,
+					'type'    => 'on_off',
+					'default' => 'off',
 				)
 			);
 		}
@@ -234,4 +242,24 @@ final class Settings {
 			return $caps;
 		}
 	}
+
+	function cmb2_render_on_off_callback( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
+		if ( $field->value === 'on' ) {
+			$is_checked = 'checked';
+		} elseif ( $field->value === 'off' ) {
+			$is_checked = '';
+		} elseif ( $field->args['default'] === 'on' ) {
+			$is_checked = 'checked';
+		} else {
+			$is_checked = '';
+		}
+
+		echo '<input class="cmb2-option cmb2-list" type="checkbox" ' . $is_checked . ' name="' . $field->args['id'] . '" id="' . $field->args['id'] . '"/>';
+		echo '<label for="' . $field->args['id'] . '"><span class="cmb2-metabox-description">' . $field->args['desc'] . '</span></label>';
+	}
+
+	function cmb2_sanitize_on_off_callback( $override_value, $value ) {
+		return is_null( $value ) ? 'off' : 'on';
+	}
+
 }
