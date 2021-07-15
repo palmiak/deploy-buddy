@@ -66,6 +66,3 @@ Currently the plugin is configurable by using the UI or by using constants in yo
 **0.1.0**
 - Initial release
 
-## Roadmap
-- Automatic deployments based on post type and post status.
-- Adding admin panel instead of setting everything via constants.
