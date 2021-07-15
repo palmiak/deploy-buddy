@@ -2,7 +2,7 @@
 namespace BuddyIntegration;
 
 function load_text_domain() {
-	 load_plugin_textdomain( Config::get( 'language_slug' ), false, dirname( Config::get( 'base_name' ) ) . '/languages' );
+	load_plugin_textdomain( Config::get( 'language_slug' ), false, dirname( Config::get( 'base_name' ) ) . '/languages' );
 }
 
 /**
@@ -83,12 +83,10 @@ function edit_options() {
 }
 
 function options_helper( $key_name, $default, $is_checkbox = false ) {
-
 	// seperate checkbox part is needed because of how CMB2 handles checkboxes - in a bit strange way.
 	if ( $is_checkbox ) {
 		if ( defined( $key_name ) ) {
-			$option = constant( $key_name );
-			return $option;
+			return constant( $key_name );
 		} else {
 			$option = isset( get_option( 'options-page' )[ $key_name ] );
 
