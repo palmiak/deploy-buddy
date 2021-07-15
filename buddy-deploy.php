@@ -40,7 +40,6 @@ Config::init(
 		'capabilities_options'          => options_helper( 'buddy_capabilities_options', 'manage_options' ),
 	)
 );
-
 add_action( 'init', __NAMESPACE__ . '\\load_text_domain', 10, 0 );
 
 if ( ! requirements_met() ) {

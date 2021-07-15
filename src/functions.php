@@ -93,8 +93,9 @@ function options_helper( $key_name, $default, $is_checkbox = false ) {
 			if ( $option ) {
 				$option = get_option( 'options-page' )[ $key_name ];
 			} else {
-				$option = 'off';
+				$option = $default;
 			}
+
 			return 'on' === $option ? true : false;
 		}
 	} else {
