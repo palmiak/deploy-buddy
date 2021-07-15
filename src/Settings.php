@@ -16,7 +16,6 @@ final class Settings {
 		add_action( 'cmb2_render_on_off', array( $this, 'cmb2_render_on_off_callback' ), 10, 5 );
 		add_action( 'cmb2_admin_init', array( $this, 'init_form' ) );
 		add_action( 'cmb2_save_options-page_fields', array( $this, 'force_redirect' ) );
-		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 	}
 
 	function force_redirect() {
