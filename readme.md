@@ -32,6 +32,11 @@ Currently the plugin is configurable by using the UI or by using constants in yo
 `buddy_automatic_deploy_capabilities` - default: manage_options - capability needed to trigger the auto deploy.
 
 ## Changelog
+**1.1.0**
+- Moved inline documentation into context help tab.
+- Fixed checkboxes not fully working in some cases.
+- Some other minor fixes.
+
 **1.0.0**
 - Added a **configuration** tab. Since now using constants is not required.
 
@@ -61,6 +66,3 @@ Currently the plugin is configurable by using the UI or by using constants in yo
 **0.1.0**
 - Initial release
 
-## Roadmap
-- Automatic deployments based on post type and post status.
-- Adding admin panel instead of setting everything via constants.

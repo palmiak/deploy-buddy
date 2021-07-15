@@ -38,10 +38,10 @@ function print_requirements_notice() {     // phpcs:ignore Squiz.PHP.Discouraged
 
 	printf(
 		'<div class="notice notice-error"><p>%1$s <a href="%2$s">%3$s</a> %4$s</p></div>',
-		esc_html__( 'Webhook not set! Please read', Config::get( 'language_slug' ) ),
-		esc_url( 'admin.php?page=' . Config::get( 'slug' ) ),
-		esc_html__( 'the Installation instructions', Config::get( 'language_slug' ) ),
-		esc_html__( 'on how to setup the plugin.', Config::get( 'language_slug' ) )
+		esc_html__( 'Webhook not set! Please set it in', Config::get( 'language_slug' ) ),
+		esc_url( 'tools.php?page=deploy-buddy&tab=configuration' ),
+		esc_html__( 'the Configuration Tab', Config::get( 'language_slug' ) ),
+		esc_html__( '.', Config::get( 'language_slug' ) )
 	);
 }
 
@@ -67,7 +67,7 @@ function capabilities_helper( $type ) {
 }
 
 function top_bar() {
-	return is_admin_bar_showing() && ! empty( Config::get( 'webhook' ) ) && Config::get( 'manual_deploy' ) && current_user_can( Config::get( 'manual_deploy_capabilities' ) );
+	return is_admin_bar_showing() && ! empty( Config::get( 'webhook' ) ) && Config::get( 'manual_deploy' ) && Config::get( 'add_to_topbar' ) && current_user_can( Config::get( 'manual_deploy_capabilities' ) );
 }
 
 function manual_deploy() {
@@ -82,13 +82,32 @@ function edit_options() {
 	return current_user_can( Config::get( 'capabilities_options' ) );
 }
 
-function options_helper( $key_name, $default ) {
+function options_helper( $key_name, $default, $is_checkbox = false ) {
 
-	if ( defined( $key_name ) ) {
-		return constant( $key_name );
-	} elseif ( isset( get_option( 'options-page' )[ $key_name ] ) && ! empty( get_option( 'options-page' )[ $key_name ] ) ) {
-		return get_option( 'options-page' )[ $key_name ];
+	// seperate checkbox part is needed because of how CMB2 handles checkboxes - in a bit strange way.
+	if ( $is_checkbox ) {
+		if ( defined( $key_name ) ) {
+			$option = constant( $key_name );
+			return $option;
+		} else {
+			$option = isset( get_option( 'options-page' )[ $key_name ] );
+
+			if ( $option ) {
+				$option = get_option( 'options-page' )[ $key_name ];
+			} else {
+				$option = 'off';
+			}
+			return 'on' === $option ? true : false;
+		}
 	} else {
-		return $default;
+		if ( defined( $key_name ) ) {
+			return constant( $key_name );
+		} elseif ( isset( get_option( 'options-page' )[ $key_name ] ) && ! empty( get_option( 'options-page' )[ $key_name ] ) ) {
+			return get_option( 'options-page' )[ $key_name ];
+		} else {
+			return $default;
+		}
 	}
+
+
 }
