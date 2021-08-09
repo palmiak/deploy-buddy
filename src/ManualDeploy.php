@@ -11,7 +11,7 @@ class ManualDeploy {
 		if ( capabilities_helper( 'top_bar' ) ) {
 			$args = array(
 				'id'    => 'buddy_manual_deploy_button',
-				'title' => '<span class="ab-icon"></span>' . __( 'Deploy Buddy', Config::get( 'language_slug' ) ),
+				'title' => '<span class="ab-icon"></span>' . __( 'Trigger Deployment', Config::get( 'language_slug' ) ),
 				'href'  => '#',
 				'meta'  => array( 'class' => 'buddy_manual_deploy_button' ),
 			);
@@ -34,36 +34,13 @@ class ManualDeploy {
 			wp_enqueue_script( 'jquery' );
 		}
 
-		/*
-		var link_id = "buddy_manual_gutenberg_button";
-
-				var link_html = \'<span class="buddy_manual_deploy_button"><a id="\' + link_id + \'" class="ab-item" href="#" ><span class="ab-icon">Deploy Buddy</span></a></span>\';
-
-				const isFullscreenMode = ( wp.data.select( "core/edit-post" ) !== null ) ? wp.data.select( "core/edit-post" ).isFeatureActive( "fullscreenMode" ) : false;
-
-				var editorEl = document.getElementById( "editor" );
-				if( !editorEl || !isFullscreenMode ){
-					return;
-				}
-
-				var unsubscribe = wp.data.subscribe( function () {
-					setTimeout( function () {
-						if ( !document.getElementById( link_id ) ) {
-							var toolbalEl = editorEl.querySelector( ".edit-post-header__toolbar" );
-							if( toolbalEl instanceof HTMLElement ){
-								toolbalEl.insertAdjacentHTML( "beforeend", link_html );
-							}
-						}
-					}, 1 )
-				} );
-				*/
 		wp_add_inline_script(
 			'jquery',
 			'
 			jQuery( document ).ready( function() {
-
 				jQuery( document ).on( "click", ".buddy_manual_deploy_button a, input.buddy_manual_deploy_button", function( e ) {
 					event.preventDefault();
+					console.log( "test" );
 					if ( confirm( " '. __( 'Are you sure that you want to trigger a deployment?', Config::get( 'language_slug' ) ) . '" ) ) {
 						jQuery.ajax( {
 							type: "POST",
@@ -73,7 +50,25 @@ class ManualDeploy {
 							}
 						} )
 					}
-				} )
+				} );
+
+				var link_html = \'<span class="buddy_manual_deploy_button"><a id="buddy_manual_gutenberg_button" class="components-button is-primary" href="#">Trigger Deployment</a></span>\';
+
+				var editorEl = document.getElementById( "editor" );
+				if( !editorEl ){
+					return;
+				}
+
+				var unsubscribe = wp.data.subscribe( function () {
+					setTimeout( function () {
+						if ( !document.getElementById( "buddy_manual_gutenberg_button" ) ) {
+							var toolbalEl = editorEl.querySelector( ".edit-post-header__toolbar" );
+							if( toolbalEl instanceof HTMLElement ){
+								toolbalEl.insertAdjacentHTML( "beforeend", link_html );
+							}
+						}
+					}, 1 )
+				} );
 			} )
 		'
 		);
@@ -94,6 +89,21 @@ class ManualDeploy {
 					transform: translateY(2px);
 					background-repeat: no-repeat;
 					background-image: url( '<?php echo plugin_dir_url( Config::get( 'base_name' ) ); ?>assets/images/logo.svg' );
+				}
+
+				#buddy_manual_gutenberg_button {
+					background-repeat: no-repeat;
+					background-image: url( '<?php echo plugin_dir_url( Config::get( 'base_name' ) ); ?>assets/images/logo.svg' );
+					background-size: 18px;
+					background-position-y: center;
+					padding-left: 35px;
+					background-position-x: 10px;
+					background-color: #1A86FD;
+					margin-right: 12px;
+				}
+
+				#buddy_manual_gutenberg_button:hover {
+					background-color: #004DFF;
 				}
 			</style>
 		<?php

@@ -39,8 +39,8 @@ function print_requirements_notice() {     // phpcs:ignore Squiz.PHP.Discouraged
 	printf(
 		'<div class="notice notice-error"><p>%1$s <a href="%2$s">%3$s</a> %4$s</p></div>',
 		esc_html__( 'Webhook not set! Please set it in', Config::get( 'language_slug' ) ),
-		esc_url( 'tools.php?page=deploy-buddy&tab=configuration' ),
-		esc_html__( 'the Configuration Tab', Config::get( 'language_slug' ) ),
+		esc_url( 'tools.php?page=deploy-buddy&tab=settings' ),
+		esc_html__( 'the Settings Tab', Config::get( 'language_slug' ) ),
 		esc_html__( '.', Config::get( 'language_slug' ) )
 	);
 }

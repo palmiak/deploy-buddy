@@ -19,13 +19,13 @@ final class Settings {
 	}
 
 	function force_redirect() {
-		$url = admin_url( 'tools.php?page=deploy-buddy&tab=configuration' );
+		$url = admin_url( 'tools.php?page=deploy-buddy&tab=settings' );
 		wp_redirect( $url );
 	}
 
 	function init_form() {
 		$tab         = isset( $_GET['tab'] ) ? $_GET['tab'] : '';
-		if( $tab === 'configuration' ) {
+		if( $tab === 'settings' ) {
 			$this->cmb_form = cmb2_get_metabox_form( 'options_metabox', 'options-page' );
 		}
 	}
@@ -67,11 +67,11 @@ final class Settings {
 					if ( 'automatic_deploy' === $tab ) :
 						?>
 					nav-tab-active<?php endif; ?>"><?php _e( 'Automatic Deploy', Config::get( 'language_slug' ) ); ?></a>
-				<a href="?page=<?php echo Config::get( 'slug' ); ?>&tab=configuration" class="nav-tab
+				<a href="?page=<?php echo Config::get( 'slug' ); ?>&tab=settings" class="nav-tab
 					<?php
-					if ( 'configuration' === $tab ) :
+					if ( 'settings' === $tab ) :
 						?>
-					nav-tab-active<?php endif; ?>"><?php _e( 'Configuration', Config::get( 'language_slug' ) ); ?></a>
+					nav-tab-active<?php endif; ?>"><?php _e( 'Settings', Config::get( 'language_slug' ) ); ?></a>
 			</nav>
 
 			<div class="tabs-content">
@@ -80,7 +80,7 @@ final class Settings {
 					case 'automatic_deploy':
 						include Config::get( 'dir' ) . '/templates/automatic_deploy.php';
 						break;
-					case 'configuration':
+					case 'settings':
 						include Config::get( 'dir' ) . '/templates/configuration.php';
 						break;
 					default:

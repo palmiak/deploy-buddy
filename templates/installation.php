@@ -22,7 +22,7 @@ namespace BuddyIntegration;
 
 	<?php
 	_e(
-		'<p>You can configure all the options in the <strong>configuration tab</strong> or you set constants in your <code>wp-config.php</code> file.</p>',
+		'<p>You can configure all the options in the <strong>settings tab</strong> or you set constants in your <code>wp-config.php</code> file.</p>',
 		Config::get( 'language_slug' )
 	);
 	?>

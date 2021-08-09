@@ -3,7 +3,7 @@ namespace BuddyIntegration;
 ?>
 
 <div class="buddy-wrapper">
-	<h1><?php _e( 'Configuration', Config::get( 'language_slug' ) ); ?></h1>
+	<h1><?php _e( 'Settings', Config::get( 'language_slug' ) ); ?></h1>
 
 	<?php if ( capabilities_helper( 'edit_options' ) ): ?>
 		<div class="notice notice-info">
