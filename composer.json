@@ -3,6 +3,12 @@
 	"description": "Seamlessly trigger Buddy.works deploys from WordPress.",
 	"type": "wordpress-plugin",
 	"license": "MIT",
+	"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/fumikito/wp-readme"
+        }
+    ],
     "authors": [
         {
             "name": "Maciej Palmowski",
@@ -12,6 +18,9 @@
     "require": {
         "composer/installers": "^1.11",
 		"cmb2/cmb2": "dev-master"
+    },
+	"require-dev": {
+        "fumikito/wp-readme": "dev-master"
     },
 	"autoload": {
 		"psr-4": {

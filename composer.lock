@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bd58e2b3fc0146ea3f630886e11655d1",
+    "content-hash": "dbc7d77618ea19f4f0b0b3e5290c2023",
     "packages": [
         {
             "name": "cmb2/cmb2",
@@ -215,11 +215,53 @@
             "time": "2021-04-28T06:42:17+00:00"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "fumikito/wp-readme",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fumikito/wp-readme.git",
+                "reference": "686b2027e8a612444fdc275ae59aa659b198ff93"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fumikito/wp-readme/zipball/686b2027e8a612444fdc275ae59aa659b198ff93",
+                "reference": "686b2027e8a612444fdc275ae59aa659b198ff93",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.5"
+            },
+            "default-branch": true,
+            "type": "library",
+            "scripts": {
+                "test": [
+                    "phpunit"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "fumikito",
+                    "email": "guy@hametuha.com"
+                }
+            ],
+            "description": "Generate readme.txt from Github's README.md",
+            "support": {
+                "source": "https://github.com/fumikito/wp-readme/tree/master",
+                "issues": "https://github.com/fumikito/wp-readme/issues"
+            },
+            "time": "2019-07-20T15:14:05+00:00"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "cmb2/cmb2": 20
+        "cmb2/cmb2": 20,
+        "fumikito/wp-readme": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

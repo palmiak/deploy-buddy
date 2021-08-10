@@ -40,7 +40,6 @@ class ManualDeploy {
 			jQuery( document ).ready( function() {
 				jQuery( document ).on( "click", ".buddy_manual_deploy_button a, input.buddy_manual_deploy_button", function( e ) {
 					event.preventDefault();
-					console.log( "test" );
 					if ( confirm( " '. __( 'Are you sure that you want to trigger a deployment?', Config::get( 'language_slug' ) ) . '" ) ) {
 						jQuery.ajax( {
 							type: "POST",
