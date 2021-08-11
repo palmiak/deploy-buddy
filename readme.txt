@@ -1,6 +1,6 @@
 === Deploy Buddy ===
 
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 7.2
@@ -47,6 +47,10 @@ Currently the plugin is configurable by using the UI or by using constants in yo
 `buddy_automatic_deploy_capabilities` - default: manage_options - capability needed to trigger the auto deploy.
 
 == Changelog ==
+
+= 1.2.2 =
+
+- Fixed the problem with Automatic Deployments running twice.
 
 = 1.2.1 =
 
