@@ -33,6 +33,7 @@ If you want to keep this plugin up-to-date install and configure <https://github
 Currently the plugin is configurable by using the UI or by using constants in your `wp-config.php` file.
 
 ### Available constants
+`buddy_webhook` - default: false - adds the webhook url
 
 `buddy_topbar` - default: true - adds the deploy button to the admin bar
 
