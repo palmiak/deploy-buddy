@@ -10,41 +10,36 @@ Contributors: palmiak
 
 ![](assets/images/cover.png)
 
-Seamlessly trigger Buddy.works deploys from WordPress.
+Seamlessly trigger [Buddy CI/CD](https://buddy.works/) deploys from WordPress.
 == Description ==
 
 = Plugin Installation =
 
-1. Download the latest zip from [releases](https://github.com/palmiak/buddy_deploy/releases/)
-2. Upload the plugin in WordPress admin panel
+1. Download the latest [release](https://github.com/palmiak/buddy_deploy/releases/).
+2. Upload the plugin in WordPress admin panel.
 
 = Updates =
 
-If you want to keep this plugin up-to-date install and configure <https://github.com/afragen/git-updater>.
+To keep this plugin up-to-date, install and configure the [Git Updater](https://github.com/afragen/git-updater).
 
 = Get your webhook url =
 
-1. Login to your [buddy.works](http://buddy.works) account.
-2. Go to your project and than select the pipeline you want to execute.
-3. Click **Webhook URL** in the sidebar and copy URL.
+1. Sign in to your [Buddy](http://buddy.works) account.
+2. Go to your project and select the pipeline you want to execute using the plugin.
+3. Click **Webhook URL** in the right sidebar and copy the URL.
 
 = Configuration =
 
-Currently the plugin is configurable by using the UI or by using constants in your `wp-config.php` file.
+You can configure the plugin using the UI or by using constants in the `wp-config.php` file.
 
 = Available constants =
 
-`buddy_topbar` - default: true - adds the deploy button to the admin bar
-
-`buddy_manual_deploy_capabilities` - default: manage_options - capability that is needed to see the deploy button
-
-`buddy_capabilities_options` - default: manage_options - capability that is needed to view options panel.
-
-`buddy_automatic_deploy` - default: false - enables automatic deployments
-
-`buddy_automatic_deploy_post_types` - default: ['post', 'page'] - post types on which the auto deployment will run.
-
-`buddy_automatic_deploy_capabilities` - default: manage_options - capability needed to trigger the auto deploy.
+- `buddy_topbar` - default: `true` - adds the deploy button to the admin bar
+- `buddy_manual_deploy_capabilities` - default: `manage_options` - capability required to see the deploy button
+- `buddy_capabilities_options` - default: manage_options - capability required to view options panel
+- `buddy_automatic_deploy` - default: false - enables automatic deployments
+- `buddy_automatic_deploy_post_types` - default: `['post', 'page']` - post types which trigger automatic deployments
+- `buddy_automatic_deploy_capabilities` - default: `manage_options` - capability required to trigger automatic deployments
 
 == Changelog ==
 
@@ -89,7 +84,7 @@ Currently the plugin is configurable by using the UI or by using constants in yo
 
 = 0.1.4 =
 
-- You can install and mange the plugin with composer. Just run `composer require buddy/deploy-buddy`.
+- You can install and manage the plugin with composer. Just run `composer require buddy/deploy-buddy`.
 
 = 0.1.3 =
 
