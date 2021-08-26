@@ -138,7 +138,7 @@ final class Settings {
 			$cmb->add_field(
 				array(
 					'name'    => __( 'Enable Manual Deployments', Config::get( 'language_slug' ) ),
-					'desc'    => __( 'Check to enable or disable manual deployments.', Config::get( 'language_slug' ) ),
+					'desc'    => __( 'Check to enable manual deployments. Uncheck to disable.', Config::get( 'language_slug' ) ),
 					'id'      => 'buddy_manual_deploy',
 					'type'    => 'on_off',
 					'default' => 'on',
@@ -162,7 +162,7 @@ final class Settings {
 			$cmb->add_field(
 				array(
 					'name'    => __( 'Manual deployments capability', Config::get( 'language_slug' ) ),
-					'desc'    => __( 'Pick which capability is needed to run manual deployments.', Config::get( 'language_slug' ) ),
+					'desc'    => __( 'Choose the capability required to run manual deployments.', Config::get( 'language_slug' ) ),
 					'id'      => 'buddy_manual_deploy_capabilities',
 					'type'    => 'select',
 					'options' => $this->roles_helper(),
@@ -184,7 +184,7 @@ final class Settings {
 			$cmb->add_field(
 				array(
 					'name'    => __( 'Enable Automatic Deployments', Config::get( 'language_slug' ) ),
-					'desc'    => __( 'Check to enable or disable automatic deployments.', Config::get( 'language_slug' ) ),
+					'desc'    => __( 'Check to enable automatic deployments. Uncheck to disable.', Config::get( 'language_slug' ) ),
 					'id'      => 'buddy_automatic_deploy',
 					'type'    => 'on_off',
 					'default' => 'off',
@@ -196,7 +196,7 @@ final class Settings {
 			$cmb->add_field(
 				array(
 					'name'              => __( 'Automatic deployment post types', Config::get( 'language_slug' ) ),
-					'desc'              => __( 'Pick which post types will enable the automatic deployments.', Config::get( 'language_slug' ) ),
+					'desc'              => __( 'Choos the post types required to run automatic deployments', Config::get( 'language_slug' ) ),
 					'id'                => 'buddy_automatic_deploy_post_types',
 					'type'              => 'multicheck',
 					'options'           => \get_post_types(),
@@ -210,7 +210,7 @@ final class Settings {
 			$cmb->add_field(
 				array(
 					'name'    => __( 'Automatic deployment capability', Config::get( 'language_slug' ) ),
-					'desc'    => __( 'Pick which capability is required to run automatic deployments.', Config::get( 'language_slug' ) ),
+					'desc'    => __( 'Choose the capability required to run automatic deployments.', Config::get( 'language_slug' ) ),
 					'id'      => 'buddy_automatic_deploy_capabilities',
 					'type'    => 'select',
 					'options' => $this->roles_helper(),

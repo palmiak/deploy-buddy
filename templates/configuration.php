@@ -7,7 +7,7 @@ namespace BuddyIntegration;
 
 	<?php if ( capabilities_helper( 'edit_options' ) ): ?>
 		<div class="notice notice-info">
-			<p>If some of your options are missing it means that they are decalared in your <code>wp-config.php</code>. Remove them from there to have a possibility to change them via this panel.</p>
+			<p>If options are missing from the Settings tab, it means they are declared in the <code>wp-config.php</code>. Remove the declarations from the <code>wp-config.php</code> file to adjust the corresponding options here.</p>
 		</div>
 
 		<?php
