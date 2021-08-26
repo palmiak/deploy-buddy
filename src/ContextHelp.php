@@ -15,20 +15,24 @@ final class ContextHelp {
 			// content for help tab
 			$webhook = __(
 				'<ol>
-			<li>Login to your buddy.works account.</li>
-			<li>Go to your project and than select the pipeline you want to execute.</li>
-			<li>Click <strong>Webhook URL</strong> in the sidebar and copy URL.</li>
+			<li>Sign in to your <a href="http://buddy.works" target="_blank">Buddy</a> account.</li>
+			<li>Go to your project and select the pipeline you want to execute using the plugin.</li>
+			<li>Click <strong>Webhook URL</strong> in the sidebar and copy the URL.</li>
 			</ol>',
 				Config::get( 'language_slug' )
 			);
 
 			$constants = __(
-				'<p><code>buddy_webhook</code> - default: \'\' - sets the webhook</p>
-			<p><code>buddy_topbar</code> - default: true - adds the deploy button to the admin bar</p>
-			<p><code>buddy_manual_deploy_capabilities</code> - default: manage_options - capability that is needed to see the deploy button</p>
-			<p><code>buddy_automatic_deploy</code> - default: false - turns on or off automatic deployments on post update.</p>
-			<p><code>buddy_automatic_deploy_post_types</code> - default: [\'post\', \'page\'] - sets on which post types does the update triggers the auto deploy.</p>
-			<p><code>buddy_automatic_deploy_capabilities</code> - default: manage_options - capability that is need to run the auto deploy. </p>
+				'<ul>
+				<li><code>buddy_webhook</code> - default: <code>\'\'</code> - adds the webhook url</li>
+				<li><code>buddy_manual_deploy</code> - default: <code>true</code> - enables or disables manual deployments</li>
+				<li><code>buddy_topbar</code> - default: <code>true</code> - adds the deploy button to the admin bar</li>
+				<li><code>buddy_manual_deploy_capabilities</code> - default: <code>manage_options</code> - capability required to see the deploy button</li>
+				<li><code>buddy_capabilities_options</code> - default: <code>manage_options</code> - capability required to view options panel</li>
+				<li><code>buddy_automatic_deploy</code> - default: <code>false</code> - enables or disables automatic deployments</li>
+				<li><code>buddy_automatic_deploy_post_types</code> - default: <code>[\'post\', \'page\']</code> - post types which trigger automatic deployments</li>
+				<li><code>buddy_automatic_deploy_capabilities</code> - default: <code>manage_options</code> - capability required to trigger automatic deployments</li>
+				</ul>
 			',
 				Config::get( 'language_slug' )
 			);

@@ -1,6 +1,6 @@
 # Deploy Buddy
 
-Stable tag: 1.2.3
+Stable tag: 1.2.4
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 7.2
@@ -36,14 +36,19 @@ You can configure the plugin using the UI or by using constants in the `wp-confi
 ### Available constants
 
 - `buddy_webhook` - default: `false` - adds the webhook url
+- `buddy_manual_deploy` - default: `true` - enables automatic deployments
 - `buddy_topbar` - default: `true` - adds the deploy button to the admin bar
 - `buddy_manual_deploy_capabilities` - default: `manage_options` - capability required to see the deploy button
-- `buddy_capabilities_options` - default: manage_options - capability required to view options panel
-- `buddy_automatic_deploy` - default: false - enables automatic deployments
+- `buddy_capabilities_options` - default: `manage_options` - capability required to view options panel
+- `buddy_automatic_deploy` - default: `false` - enables automatic deployments
 - `buddy_automatic_deploy_post_types` - default: `['post', 'page']` - post types which trigger automatic deployments
 - `buddy_automatic_deploy_capabilities` - default: `manage_options` - capability required to trigger automatic deployments
 
 ## Changelog
+
+### 1.2.4
+
+- Added some missing constatns in readme and in context help.
 
 ### 1.2.3
 
