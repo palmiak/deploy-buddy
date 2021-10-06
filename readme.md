@@ -46,6 +46,10 @@ You can configure the plugin using the UI or by using constants in the `wp-confi
 
 ## Changelog
 
+### 1.3.0
+
+- Settings screen rewrote to use Gutenberg.
+
 ### 1.2.4
 
 - Added some missing constatns in readme and in context help.

@@ -3,6 +3,10 @@ namespace BuddyIntegration;
 
 class BuddyIntegration {
 	public function __construct() {
+		if ( Config::get( 'settings_version' ) === false ) {
+			\BuddyIntegration\update_settings();
+		}
+
 		$settings = new Settings();
 		new ContextHelp();
 

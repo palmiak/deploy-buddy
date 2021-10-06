@@ -107,6 +107,35 @@ function options_helper( $key_name, $default, $is_checkbox = false ) {
 			return $default;
 		}
 	}
+}
 
+function update_settings() {
+	$option_keys = array(
+		'buddy_webhook',
+		'buddy_topbar',
+		'buddy_manual_deploy_capabilities',
+		'buddy_manual_deploy',
+		'buddy_automatic_deploy',
+		'buddy_automatic_deploy_post_types',
+		'buddy_automatic_deploy_capabilities',
+		'buddy_capabilities_options',
+	);
 
+	$old_options = get_option( 'options-page' );
+
+	if ( count( $old_options ) > 0 ) {
+		foreach( $option_keys as $option ) {
+			if ( isset( $old_options[ $option ] ) ) {
+				// CMB had this weird thing about storing false, so they were store as on or off.
+				if ( in_array( $option, array( 'buddy_manual_deploy', 'buddy_topbar', 'buddy_automatic_deploy' ) ) ) {
+					$value = $old_options[ $option ] === 'on' ? true : false;
+					update_option( $option, $value );
+				} else {
+					update_option( $option, $old_options[ $option ] );
+				}
+			}
+		}
+	}
+
+	update_option( 'buddy_options_version', 2 );
 }
