@@ -82,33 +82,13 @@ function edit_options() {
 	return current_user_can( Config::get( 'capabilities_options' ) );
 }
 
-function options_helper( $key_name, $default, $is_checkbox = false ) {
-	// seperate checkbox part is needed because of how CMB2 handles checkboxes - in a bit strange way.
-	if ( $is_checkbox ) {
-		if ( defined( $key_name ) ) {
-			return constant( $key_name );
-		} else {
-			$option = isset( get_option( 'options-page' )[ $key_name ] );
-
-			if ( $option ) {
-				$option = get_option( 'options-page' )[ $key_name ];
-			} else {
-				$option = $default;
-			}
-
-			return 'on' === $option ? true : false;
-		}
+function options_helper( $key_name, $default ) {
+	if ( defined( $key_name ) ) {
+		return constant( $key_name );
 	} else {
-		if ( defined( $key_name ) ) {
-			return constant( $key_name );
-		} elseif ( isset( get_option( 'options-page' )[ $key_name ] ) && ! empty( get_option( 'options-page' )[ $key_name ] ) ) {
-			return get_option( 'options-page' )[ $key_name ];
-		} else {
-			return $default;
-		}
+		return get_option( $key_name, $default );
 	}
 }
-
 function update_settings() {
 	$option_keys = array(
 		'buddy_webhook',

@@ -111,12 +111,18 @@ final class Settings {
 		wp_localize_script(
 			'buddy_deploy_admin_options',
 			'buddy_vars',
-			[
-				'roles' => $this->roles_helper(),
-				'postTypes' => $this->post_type_helper(),
-				'definedWebhook' => Config::get( 'webhook' ),
-				'languageSlug' => Config::get( 'language_slug' ),
-			],
+			array(
+				'roles'                              => $this->roles_helper(),
+				'postTypes'                          => $this->post_type_helper(),
+				'definedWebhook'                     => defined( 'buddy_webhook' ),
+				'definedTopBar'                      => defined( 'buddy_topbar' ),
+				'definedManualDeployCapabilities'    => defined( 'buddy_manual_deploy_capabilities' ),
+				'definedManualDeploy'                => defined( 'buddy_manual_deploy' ),
+				'definedAutomaticDeploy'             => defined( 'buddy_automatic_deploy' ),
+				'definedAutomaticDeployPostTypes'    => defined( 'buddy_automatic_deploy_post_types' ),
+				'definedAutomaticDeployCapabilities' => defined( 'buddy_automatic_deploy_capabilities' ),
+				'languageSlug'                       => Config::get( 'language_slug' ),
+			),
 		);
 
 		wp_enqueue_script( 'buddy_deploy_admin_options' );
@@ -214,7 +220,7 @@ final class Settings {
 
 			$caps = array_unique( array_keys( $caps ) );
 			$caps = array_combine( $caps, $caps );
-			$tmp = $caps;
+			$tmp  = $caps;
 		}
 
 		$ret = array();
@@ -230,7 +236,7 @@ final class Settings {
 
 	function post_type_helper() {
 		$post_types = \get_post_types();
-		$ret = array();
+		$ret        = array();
 		foreach ( $post_types as $type ) {
 			$ret[] = array(
 				'label' => $type,

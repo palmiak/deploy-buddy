@@ -115,18 +115,23 @@ class App extends Component {
                                 __('Manual Deployments', buddy_vars.languageSlug)
                             }
                             icon="upload">
-                            <ToggleControl checked={manualDeploy}
-                                help={
-                                    __('Check to enable or disable manual deployments.', buddy_vars.languageSlug)
-                                }
-                                label={
-                                    __('Enable Manual Deployments', buddy_vars.languageSlug)
-                                }
-                                onChange={
-                                    (manualDeploy) => this.setState({manualDeploy})
-                                }/>
 
-                            <ToggleControl checked={topbar}
+							{ !buddy_vars.definedManualDeploy
+							? <ToggleControl checked={manualDeploy}
+								help={
+									__('Check to enable or disable manual deployments.', buddy_vars.languageSlug)
+								}
+								label={
+									__('Enable Manual Deployments', buddy_vars.languageSlug)
+								}
+								onChange={
+									(manualDeploy) => this.setState({manualDeploy})
+								}/>
+							: <div/>
+							}
+
+							{ !buddy_vars.definedTopBar
+							? <ToggleControl checked={topbar}
                                 label={
                                     __('Add deploy button to admin bar', buddy_vars.languageSlug)
                                 }
@@ -136,21 +141,27 @@ class App extends Component {
                                 onChange={
                                     (topbar) => this.setState({topbar})
                                 }/>
+							: <div/>
+							}
 
-							<SelectControl
+							{ !buddy_vars.definedManualDeployCapabilities
+							? <SelectControl
                                 help={ __( 'Pick which capability is needed to run manual deployments.', buddy_vars.languageSlug ) }
                                 label={ __( 'Manual deployments capability', buddy_vars.languageSlug ) }
                                 onChange={ ( manualDeployCapabilities ) => this.setState( { manualDeployCapabilities } ) }
                                 options={ buddy_vars.roles }
                                 value={ manualDeployCapabilities }
                             />
+							: <div/>
+							}
                         </PanelBody>
 
                         <PanelBody title={
                                 __('Automatic Deployments', buddy_vars.languageSlug)
                             }
                             icon="controls-repeat">
-                            <ToggleControl checked={automaticDeploy}
+							{ !buddy_vars.definedAutomaticDeploy
+							? <ToggleControl checked={automaticDeploy}
                                 label={
                                     __('Enable Automatic Deployments', buddy_vars.languageSlug)
                                 }
@@ -160,31 +171,39 @@ class App extends Component {
                                 onChange={
                                     (automaticDeploy) => this.setState({automaticDeploy})
                             }/>
-
-							<ul>
-							{
-								posts_array.map(( item ) => (
-									<li><CheckboxControl
-										className="check_items"
-										label={ item.label }
-										checked={ automaticDeployPostTypes.indexOf( item.label ) > -1 }
-										onChange={ ( check ) => {
-											const index = automaticDeployPostTypes.indexOf( item.label );
-											check ? automaticDeployPostTypes.push( item.label ) : ( index !== -1 ? automaticDeployPostTypes.splice( index, 1 ) : automaticDeployPostTypes );
-											this.setState({ automaticDeployPostTypes } )
-										} }
-									/></li>
-								) )
+							: <div/>
 							}
-							</ul>
 
-							<SelectControl
+							{ !buddy_vars.definedAutomaticDeployPostTypes
+							? <ul>
+								{
+									posts_array.map(( item ) => (
+										<li><CheckboxControl
+											className="check_items"
+											label={ item.label }
+											checked={ automaticDeployPostTypes.indexOf( item.label ) > -1 }
+											onChange={ ( check ) => {
+												const index = automaticDeployPostTypes.indexOf( item.label );
+												check ? automaticDeployPostTypes.push( item.label ) : ( index !== -1 ? automaticDeployPostTypes.splice( index, 1 ) : automaticDeployPostTypes );
+												this.setState({ automaticDeployPostTypes } )
+											} }
+										/></li>
+									) )
+								}
+								</ul>
+							: <div />
+							}
+
+							{ !buddy_vars.definedAutomaticDeployPostTypes
+							? <SelectControl
 								help={ __( 'Pick which capability is required to run automatic deployments.', buddy_vars.languageSlug ) }
 								label={ __( 'Automatic deployment capability', buddy_vars.languageSlug ) }
 								onChange={ ( automaticDeployCapabilities ) => this.setState( { automaticDeployCapabilities } ) }
 								options={ buddy_vars.roles }
 								value={ automaticDeployCapabilities }
 							/>
+							: <div/>
+							}
                         </PanelBody>
                         <Button isPrimary isLarge
                             onClick={
