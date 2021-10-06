@@ -1,6 +1,6 @@
 # Deploy Buddy
 
-Stable tag: 1.2.4
+Stable tag: 1.3.0
 Requires at least: 5.0
 Tested up to: 5.8
 Requires PHP: 7.2
@@ -45,6 +45,10 @@ You can configure the plugin using the UI or by using constants in the `wp-confi
 - `buddy_automatic_deploy_capabilities` - default: `manage_options` - capability required to trigger automatic deployments
 
 ## Changelog
+
+### 1.3.0
+
+- Settings screen rewrote to use Gutenberg.
 
 ### 1.2.4
 

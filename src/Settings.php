@@ -5,30 +5,131 @@ namespace BuddyIntegration;
 final class Settings {
 
 	var $capabilities;
-	var $cmb_form;
 
 	function __construct() {
 		if ( isset( $_GET['page'] ) && $_GET['page'] === Config::get( 'slug' ) ) {
 			add_action( 'admin_enqueue_scripts', array( $this, 'include_styles' ) );
 		}
-		add_action( 'cmb2_admin_init', array( $this, 'register_metabox' ) );
-		add_filter( 'cmb2_sanitize_on_off', array( $this, 'cmb2_sanitize_on_off_callback' ), 11, 2 );
-		add_action( 'cmb2_render_on_off', array( $this, 'cmb2_render_on_off_callback' ), 10, 5 );
-		add_action( 'cmb2_admin_init', array( $this, 'init_form' ) );
-		add_action( 'cmb2_save_options-page_fields', array( $this, 'force_redirect' ) );
+		add_action( 'init', array( $this, 'plugin_register_settings' ), 10 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'plugin_admin_scripts' ), 10 );
 	}
 
-	function force_redirect() {
-		$url = admin_url( 'tools.php?page=deploy-buddy&tab=settings' );
-		wp_redirect( $url );
+	function plugin_register_settings() {
+		register_setting(
+			'buddy_plugin_settings',
+			'buddy_webhook',
+			array(
+				'default'      => '',
+				'show_in_rest' => true,
+				'type'         => 'string',
+			)
+		);
+
+		register_setting(
+			'buddy_plugin_settings',
+			'buddy_manual_deploy',
+			array(
+				'default'      => true,
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+			)
+		);
+
+		register_setting(
+			'buddy_plugin_settings',
+			'buddy_manual_deploy_capabilities',
+			array(
+				'default'      => 'manage_options',
+				'show_in_rest' => true,
+				'type'         => 'string',
+			)
+		);
+
+		register_setting(
+			'buddy_plugin_settings',
+			'buddy_topbar',
+			array(
+				'default'      => true,
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+			)
+		);
+
+		register_setting(
+			'buddy_plugin_settings',
+			'buddy_automatic_deploy',
+			array(
+				'default'      => false,
+				'show_in_rest' => true,
+				'type'         => 'boolean',
+			)
+		);
+
+		register_setting(
+			'buddy_plugin_settings',
+			'buddy_automatic_deploy_post_types',
+			array(
+				'default'      => array( 'post', 'page' ),
+				'show_in_rest' => array(
+					'schema' => array(
+						'type'  => 'array',
+						'items' => array(
+							'type' => 'string',
+						),
+					),
+				),
+			)
+		);
+
+		register_setting(
+			'buddy_plugin_settings',
+			'buddy_automatic_deploy_capabilities',
+			array(
+				'default'      => 'manage_options',
+				'show_in_rest' => true,
+				'type'         => 'string',
+			)
+		);
+
 	}
 
-	function init_form() {
-		$tab         = isset( $_GET['tab'] ) ? $_GET['tab'] : '';
-		if( $tab === 'settings' ) {
-			$this->cmb_form = cmb2_get_metabox_form( 'options_metabox', 'options-page' );
-		}
+	function plugin_admin_scripts() {
+		$dir = Config::get( 'dir' );
+
+		$script_asset_path = "$dir/build/admin.asset.php";
+
+		$admin_js     = 'build/admin.js';
+		$script_asset = require $script_asset_path;
+
+		wp_register_script(
+			'buddy_deploy_admin_options',
+			plugins_url( $admin_js, Config::get( 'file_path' ) ),
+			$script_asset['dependencies'],
+			$script_asset['version']
+		);
+
+		wp_localize_script(
+			'buddy_deploy_admin_options',
+			'buddy_vars',
+			[
+				'roles' => $this->roles_helper(),
+				'postTypes' => $this->post_type_helper(),
+				'definedWebhook' => false,
+				'languageSlug' => Config::get( 'language_slug' ),
+			],
+		);
+
+		wp_enqueue_script( 'buddy_deploy_admin_options' );
+
+		$admin_css = 'build/admin.css';
+		wp_enqueue_style(
+			'buddy_deploy_admin_options',
+			plugins_url( $admin_css, Config::get( 'file_path' ) ),
+			array( 'wp-components' ),
+			filemtime( "$dir/$admin_css" )
+		);
 	}
+
 	/**
 	 * Add the top level menu page.
 	 */
@@ -81,7 +182,7 @@ final class Settings {
 						include Config::get( 'dir' ) . '/templates/automatic_deploy.php';
 						break;
 					case 'settings':
-						include Config::get( 'dir' ) . '/templates/configuration.php';
+						echo '<div id="buddy-options-wrapper"></div>';
 						break;
 					default:
 						include Config::get( 'dir' ) . '/templates/manual_deploy.php';
@@ -96,138 +197,13 @@ final class Settings {
 		<?php
 	}
 
-	function register_metabox() {
-		$cmb = new_cmb2_box(
-			array(
-				'id'           => 'options_metabox',
-				'object_types' => array( 'options-page' ),
-			)
-		);
-
-		if ( ! defined( 'buddy_webhook' ) ) {
-			$cmb->add_field(
-				array(
-					'name' => __( 'Basic configuration', Config::get( 'language_slug' ) ),
-					'desc' => '',
-					'type' => 'title',
-					'id'   => 'basic_configuration',
-				)
-			);
-
-			$cmb->add_field(
-				array(
-					'name'      => __( 'Webhook', Config::get( 'language_slug' ) ),
-					'desc'      => __( 'Enter your Buddy webhook', Config::get( 'language_slug' ) ),
-					'id'        => 'buddy_webhook',
-					'type'      => 'text_url',
-					'protocols' => array( 'http', 'https' ),
-				)
-			);
-		}
-
-		$cmb->add_field(
-			array(
-				'name' => __( 'Manual Deployments', Config::get( 'language_slug' ) ),
-				'desc' => '',
-				'type' => 'title',
-				'id'   => 'manual_deployments',
-			)
-		);
-
-		if ( ! defined( 'buddy_manual_deploy' ) ) {
-			$cmb->add_field(
-				array(
-					'name'    => __( 'Enable Manual Deployments', Config::get( 'language_slug' ) ),
-					'desc'    => __( 'Check to enable manual deployments. Uncheck to disable.', Config::get( 'language_slug' ) ),
-					'id'      => 'buddy_manual_deploy',
-					'type'    => 'on_off',
-					'default' => 'on',
-				)
-			);
-		}
-
-		if ( ! defined( 'buddy_topbar' ) ) {
-			$cmb->add_field(
-				array(
-					'name'    => __( 'Add deploy button to admin bar', Config::get( 'language_slug' ) ),
-					'desc'    => __( 'Adds deployment button to admin bar.', Config::get( 'language_slug' ) ),
-					'id'      => 'buddy_topbar',
-					'type'    => 'on_off',
-					'default' => 'on',
-				)
-			);
-		}
-
-		if ( ! defined( 'buddy_manual_deploy_capabilities' ) ) {
-			$cmb->add_field(
-				array(
-					'name'    => __( 'Manual deployments capability', Config::get( 'language_slug' ) ),
-					'desc'    => __( 'Choose the capability required to run manual deployments.', Config::get( 'language_slug' ) ),
-					'id'      => 'buddy_manual_deploy_capabilities',
-					'type'    => 'select',
-					'options' => $this->roles_helper(),
-					'default' => 'manage_options',
-				)
-			);
-		}
-
-		$cmb->add_field(
-			array(
-				'name' => __( 'Automatic Deployments', Config::get( 'language_slug' ) ),
-				'desc' => '',
-				'type' => 'title',
-				'id'   => 'automatic_deployments',
-			)
-		);
-
-		if ( ! defined( 'buddy_automatic_deploy' ) ) {
-			$cmb->add_field(
-				array(
-					'name'    => __( 'Enable Automatic Deployments', Config::get( 'language_slug' ) ),
-					'desc'    => __( 'Check to enable automatic deployments. Uncheck to disable.', Config::get( 'language_slug' ) ),
-					'id'      => 'buddy_automatic_deploy',
-					'type'    => 'on_off',
-					'default' => 'off',
-				)
-			);
-		}
-
-		if ( ! defined( 'buddy_automatic_deploy_post_types' ) ) {
-			$cmb->add_field(
-				array(
-					'name'              => __( 'Automatic deployment post types', Config::get( 'language_slug' ) ),
-					'desc'              => __( 'Choos the post types required to run automatic deployments', Config::get( 'language_slug' ) ),
-					'id'                => 'buddy_automatic_deploy_post_types',
-					'type'              => 'multicheck',
-					'options'           => \get_post_types(),
-					'select_all_button' => true,
-					'default'           => array( 'page', 'post' ),
-				)
-			);
-		}
-
-		if ( ! defined( 'buddy_automatic_deploy_capabilities' ) ) {
-			$cmb->add_field(
-				array(
-					'name'    => __( 'Automatic deployment capability', Config::get( 'language_slug' ) ),
-					'desc'    => __( 'Choose the capability required to run automatic deployments.', Config::get( 'language_slug' ) ),
-					'id'      => 'buddy_automatic_deploy_capabilities',
-					'type'    => 'select',
-					'options' => $this->roles_helper(),
-					'default' => 'manage_options',
-				)
-			);
-		}
-
-	}
-
 	function roles_helper() {
 		if ( ! function_exists( '\get_editable_roles' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/user.php';
 		}
 
 		if ( ! empty( $this->capabilities ) ) {
-			return $this->capabilities;
+			$tmp = $this->capabilities;
 		} else {
 			$caps           = array();
 			$editable_roles = \get_editable_roles();
@@ -238,27 +214,30 @@ final class Settings {
 
 			$caps = array_unique( array_keys( $caps ) );
 			$caps = array_combine( $caps, $caps );
-			return $caps;
-		}
-	}
-
-	function cmb2_render_on_off_callback( $field, $escaped_value, $object_id, $object_type, $field_type_object ) {
-		if ( $field->value === 'on' ) {
-			$is_checked = 'checked';
-		} elseif ( $field->value === 'off' ) {
-			$is_checked = '';
-		} elseif ( $field->args['default'] === 'on' ) {
-			$is_checked = 'checked';
-		} else {
-			$is_checked = '';
+			$tmp = $caps;
 		}
 
-		echo '<input class="cmb2-option cmb2-list" type="checkbox" ' . $is_checked . ' name="' . $field->args['id'] . '" id="' . $field->args['id'] . '"/>';
-		echo '<label for="' . $field->args['id'] . '"><span class="cmb2-metabox-description">' . $field->args['desc'] . '</span></label>';
+		$ret = array();
+		foreach ( $caps as $cap ) {
+			$ret[] = array(
+				'label' => $cap,
+				'value' => $cap,
+			);
+		}
+
+		return $ret;
 	}
 
-	function cmb2_sanitize_on_off_callback( $override_value, $value ) {
-		return is_null( $value ) ? 'off' : 'on';
-	}
+	function post_type_helper() {
+		$post_types = \get_post_types();
+		$ret = array();
+		foreach ( $post_types as $type ) {
+			$ret[] = array(
+				'label' => $type,
+				'value' => $type,
+			);
+		}
 
+		return $ret;
+	}
 }
