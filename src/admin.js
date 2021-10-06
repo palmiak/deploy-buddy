@@ -107,7 +107,7 @@ class App extends Component {
 							__('Required configuration', buddy_vars.languageSlug)
 						}
 							icon="admin-tools">
-							<p>Webhook was already defined in WP-config.</p>
+							<p>Webhook is already defined in <code>wp-config.php</code> file.</p>
 						</PanelBody>
 						}
 

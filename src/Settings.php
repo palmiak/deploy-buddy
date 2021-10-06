@@ -114,7 +114,7 @@ final class Settings {
 			[
 				'roles' => $this->roles_helper(),
 				'postTypes' => $this->post_type_helper(),
-				'definedWebhook' => false,
+				'definedWebhook' => Config::get( 'webhook' ),
 				'languageSlug' => Config::get( 'language_slug' ),
 			],
 		);
