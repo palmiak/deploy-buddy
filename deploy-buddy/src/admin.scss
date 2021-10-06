@@ -1,0 +1,40 @@
+#buddy-options-wrapper {
+
+	.components-placeholder {
+		background: #f1f1f1;
+	}
+
+	.buddy-plugin__main {
+		margin-left: auto;
+		margin-right: auto;
+
+        .components-panel {
+            background: none;
+            border: none;
+        }
+
+		.components-panel__body {
+            background: #ffffff;
+			border: 1px solid #e2e4e7;
+			margin: 1rem 0;
+        }
+	}
+
+    .components-panel__row {
+        > div {
+            flex-grow: 1;
+            margin-right: 1rem;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .buddy-plugin__notices {
+        .components-snackbar-list {
+            bottom: .5rem;
+            position: fixed;
+        }
+    }
+}

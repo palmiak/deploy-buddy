@@ -1,0 +1,1 @@
+{"version":3,"file":"types.d.ts","sourceRoot":"","sources":["../../../src/ui/control-label/types.ts"],"names":[],"mappings":"AAAA;;GAEG;AACH,OAAO,KAAK,EAAE,KAAK,IAAI,SAAS,EAAE,MAAM,kBAAkB,CAAC;AAE3D,oBAAY,KAAK,GAAG,SAAS,GAAG;IAC/B,OAAO,CAAC,EAAE,OAAO,CAAC;IAClB,IAAI,CAAC,EAAE,OAAO,GAAG,QAAQ,GAAG,OAAO,CAAC;CACpC,CAAC"}
