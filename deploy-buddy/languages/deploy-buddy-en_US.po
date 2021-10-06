@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2021-06-26 12:48+0200\n"
+"PO-Revision-Date: 2021-06-26 12:48+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.0\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: .git\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#: src/ManualDeploy.php:14
+msgid "Deploy Buddy"
+msgstr ""
+
+#: src/ManualDeploy.php:42
+msgid "Are you sure that you want to trigger a deployment?"
+msgstr ""
+
+#: src/ManualDeploy.php:47
+msgid "Deployment triggered succesfully."
+msgstr ""
+
+#: src/Settings.php:48
+msgid "Installation"
+msgstr ""
+
+#: src/Settings.php:54
+msgid "Manual Deploy"
+msgstr ""
+
+#: src/Settings.php:61
+msgid "Automatic Deploy"
+msgstr ""
+
+#: src/Settings.php:70 src/Settings.php:76
+msgid "You are not allowed to view this page"
+msgstr ""
+
+#: templates/automatic_deploy.php:7
+msgid "Automatic Deployments"
+msgstr ""
+
+#: templates/automatic_deploy.php:9
+#, php-format
+msgid ""
+"<p>Each time a member with at least <strong>%s</strong> capability will save "
+"or update a post from this post types:<br/> <strong>%s</strong><br/> the "
+"auto deploy will run."
+msgstr ""
+
+#: templates/automatic_deploy.php:11
+msgid ""
+"<p>If you want to change the capability needed to trigger the auto deploy, "
+"add <code>buddy_automatic_deploy_capabilities</code> constant to wp-config."
+"php file."
+msgstr ""
+
+#: templates/automatic_deploy.php:13
+msgid ""
+"<p>If you want to change the post types, add "
+"<code>buddy_automatic_deploy_post_types</code> constant to wp-config.php "
+"file."
+msgstr ""
+
+#: templates/header.php:11
+msgid "Try Buddy"
+msgstr ""
+
+#: templates/header.php:12
+msgid "Report an issue"
+msgstr ""
+
+#: templates/installation.php:6
+msgid "Installation and usage"
+msgstr ""
+
+#: templates/installation.php:8
+msgid "Get your webhook url"
+msgstr ""
+
+#: templates/installation.php:12
+msgid ""
+"<ol>\n"
+"\t\t<li>Login to your buddy.works account.</li>\n"
+"\t\t<li>Go to your project and than select the pipeline you want to execute."
+"</li>\n"
+"\t\t<li>Click <strong>Webhook URL</strong> in the sidebar and copy URL.</"
+"li>\n"
+"\t</ol>"
+msgstr ""
+
+#: templates/installation.php:21
+msgid "Configure the plugin"
+msgstr ""
+
+#: templates/installation.php:25
+msgid ""
+"<p>Currently the plugin is only configurable by constants that you can set "
+"in your <code>wp-config.php</code> file.</p>\n"
+"\n"
+"\t<p>The only required constant is the <code>buddy_webhook</code>, where you "
+"have to paste the webhook URL.</p>\n"
+"\n"
+"\t<p><pre><code>define( 'buddy_webhook', PASTE_URL_HERE );</code></pre></p>"
+msgstr ""
+
+#: templates/installation.php:34
+msgid "Other constants"
+msgstr ""
+
+#: templates/installation.php:37
+msgid ""
+"<p><code>buddy_topbar</code> - default: true - adds the deploy button to the "
+"admin bar</p>\n"
+"\t\t<p><code>buddy_capabilities</code> - default: manage_options - "
+"capability that is needed to see the deploy button</p>\n"
+"\t\t<p><code>buddy_automatic_deploy</code> - default: false - turn on or off "
+"automatic deployments on post update.</p>\n"
+"\t\t<p><code>buddy_automatic_deploy_post_types</code> - default: ['post', "
+"'page'] - sets on which post types does the update triggers the auto deploy."
+"</p>\n"
+"\t\t<p><code>buddy_automatic_deploy_capabilities</code> - default: "
+"manage_options - capability that is need to run the auto deploy. </p>\n"
+"\t\t"
+msgstr ""
+
+#: templates/manual_deploy.php:7
+msgid "Execute manual deployment"
+msgstr ""
+
+#: templates/manual_deploy.php:9
+msgid ""
+"<p>By pressing the <strong>deploy</strong> button you will trigger the "
+"endpoint you selected.</p>"
+msgstr ""
+
+#: templates/manual_deploy.php:12
+msgid "Deploy"
+msgstr ""
