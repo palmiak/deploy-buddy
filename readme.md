@@ -46,6 +46,10 @@ You can configure the plugin using the UI or by using constants in the `wp-confi
 
 ## Changelog
 
+### 1.3.3
+
+- Changed the default value of `automatic deployments`.
+
 ### 1.3.2
 
 - More small fixes.
