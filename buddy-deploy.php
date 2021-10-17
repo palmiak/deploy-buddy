@@ -3,7 +3,7 @@
  * Plugin Name: Deploy Buddy
  * Description: Seamlessly trigger Buddy.works deploys from WordPress
  * Author: Buddy.Works, Maciek Palmowski
- * Version: 1.3.2
+ * Version: 1.3.3
  * Author URI: https://buddy.works/
  * Text-domain: buddy_deploy
  * GitHub Plugin URI: palmiak/deploy-buddy
@@ -20,7 +20,7 @@ require_once __DIR__ . '/vendor/autoload.php';
 
 Config::init(
 	array(
-		'version'                       => '1.3.2',
+		'version'                       => '1.3.3',
 		'file_path'                     => __FILE__,
 		'dir'                           => __DIR__,
 		'base_name'                     => plugin_basename( __FILE__ ),
@@ -35,7 +35,7 @@ Config::init(
 		'add_to_topbar'                 => options_helper( 'buddy_topbar', true, ),
 		'manual_deploy_capabilities'    => options_helper( 'buddy_manual_deploy_capabilities', 'manage_options' ),
 		'manual_deploy'                 => options_helper( 'buddy_manual_deploy', true ),
-		'automatic_deploy'              => options_helper( 'buddy_automatic_deploy', true ),
+		'automatic_deploy'              => options_helper( 'buddy_automatic_deploy', false ),
 		'automatic_deploy_post_types'   => options_helper( 'buddy_automatic_deploy_post_types', array( 'post', 'page' ) ),
 		'automatic_deploy_capabilities' => options_helper( 'buddy_automatic_deploy_capabilities', 'manage_options' ),
 		'capabilities_options'          => options_helper( 'buddy_capabilities_options', 'manage_options' ),
