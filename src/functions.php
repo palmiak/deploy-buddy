@@ -103,7 +103,7 @@ function update_settings() {
 
 	$old_options = get_option( 'options-page' );
 
-	if ( count( $old_options ) > 0 ) {
+	if ( $old_options && count( $old_options ) > 0 ) {
 		foreach( $option_keys as $option ) {
 			if ( isset( $old_options[ $option ] ) ) {
 				// CMB had this weird thing about storing false, so they were store as on or off.
