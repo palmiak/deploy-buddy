@@ -48,6 +48,10 @@ Currently the plugin is configurable by using the UI or by using constants in yo
 
 == Changelog ==
 
+= 1.3.4 =
+
+- Fixed a critical bug.
+
 = 1.2.2 =
 
 - Fixed the problem with Automatic Deployments running twice.
